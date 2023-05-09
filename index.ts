@@ -1,31 +1,50 @@
 import * as express from 'express';
 import supabaseDB from './src/supabase/supabaseClient';
 
-console.log(supabaseDB.fetchUsers());
-
 const app = express();
+
+app.use(express.json());
 
 app.listen(3000, () => {
     console.log('Server is running on port 3000');
 });
 
 app.get('/', (req: express.Request, res: express.Response) => {
-    res.send(supabaseDB.fetchUsers());
+    res.send('Default route');
 });
 
-app.get('/ping', (req: express.Request, res: express.Response) => {
-    res.send('pong');
-    console.log(req.query); // { name: 'Adrien' } url : /ping?name=Adrien
+app.post('/create', async (req: express.Request, res: express.Response) => {
+    try {
+        const user = req.query.name as string;
+
+        await supabaseDB.createUser(user);
+        res.send('User created ' + user + ' successfully');
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('An error occurred while creating the user');
+    }
 });
 
-app.get('/school', (req: express.Request, res: express.Response) => {
-    res.send('PD VA !');
+app.get('/read', async (req: express.Request, res: express.Response) => {
+    try {
+        const result = await supabaseDB.fetchUsers();
+
+        res.send(result);
+    } catch (error) {
+        res.status(500).send('An error occurred while fetching the users');
+    }
 });
 
-app.get('/school/:name/:id', (req: express.Request, res: express.Response) => {
-    const name = req.params.name;
-    const id = req.params.id;
-    // { name: 'Adrien' } url : /school/name=Adrien/id=1
+app.post('/update', async (req: express.Request, res: express.Response) => {
+    try {
+        const userID = parseInt(req.query.id as string);
+        const name = req.query.name as string;
 
-    res.send(`Bonjour ${name.toUpperCase()} ! Tu es dans la classe n° ${id}`);
+        await supabaseDB.updateUser(userID, name);
+
+        res.send('User N°' +  userID + 'got his name updated to ' + name + ' successfully');
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('An error occurred while updating the user');
+    }
 });

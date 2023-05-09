@@ -27,14 +27,61 @@ class SupabaseDB {
         }
     }
 
-    // Fetch all users from the database => Test the connection
-    async fetchUsers() {
-        const { data: users, error } = await this.supabase.from("users").select("*");
-        if (error) {
-            console.error(error);
-        } else {
-            console.log(users);
+    /*
+    __________  __  ______ 
+    / ____/ __ \/ / / / __ \
+    / /   / /_/ / / / / / / /
+    / /___/ _, _/ /_/ / /_/ / 
+    \____/_/ |_|\____/_____/  
+    
+    */
+    // Create
+    async createUser(name: string) {
+        try {
+            const { data, error } = await this.supabase.from('users').insert([
+                { name: name },
+            ]);
+            if (error) {
+                throw error;
+            }
+            console.log(data);
         }
+        catch (error) {
+            console.error(error);
+        }
+    }
+    // Read
+    async fetchUsers() {
+        try {
+            const { data: users, error } = await this.supabase.from("users").select("*");
+            if (error) {
+                throw error;
+            }
+            return users;
+        } catch (error) {
+            console.error(error);
+        }
+    }
+    // Update
+    async updateUser(id: number, name: string) {
+        try{
+            const { data, error } = await this.supabase.from('users').update({ name: name }).match({ id: id });
+            if (error) {
+                throw error;
+            }
+            console.log(data);
+        }
+        catch (error) {
+            console.error(error);
+        }
+    }
+
+    // Delete
+    async deleteUser(id: number) {
+        const { data: user, error } = await this.supabase
+            .from('users')
+            .delete()
+            .match({ id });
     }
 }
 
