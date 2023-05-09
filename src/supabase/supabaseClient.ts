@@ -27,6 +27,7 @@ class SupabaseDB {
         }
     }
 
+    // Fetch all users from the database => Test the connection
     async fetchUsers() {
         const { data: users, error } = await this.supabase.from("users").select("*");
         if (error) {

@@ -1,7 +1,7 @@
 import * as express from 'express';
 import supabaseDB from './src/supabase/supabaseClient';
 
-// supabaseDB.fetchUsers();
+console.log(supabaseDB.fetchUsers());
 
 const app = express();
 
@@ -10,7 +10,7 @@ app.listen(3000, () => {
 });
 
 app.get('/', (req: express.Request, res: express.Response) => {
-    res.send('Tu t\'es perdu ?');
+    res.send(supabaseDB.fetchUsers());
 });
 
 app.get('/ping', (req: express.Request, res: express.Response) => {
