@@ -6,7 +6,8 @@ dotenv.config();
 class SupabaseDB {
     supabaseUrl: string | undefined;
     supabaseKey: string | undefined;
-    supabase: any; // Define supabase as a property of the class
+    // Define supabase as a property of the class
+    supabase: any; 
 
     constructor() {
         this.supabaseUrl = process.env.SUPABASE_URL;
@@ -81,7 +82,7 @@ class SupabaseDB {
         const { data: user, error } = await this.supabase
             .from('users')
             .delete()
-            .match({ id });
+            .match({ id: id });
     }
 }
 

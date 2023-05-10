@@ -1,4 +1,5 @@
 import * as express from 'express';
+
 import supabaseDB from './src/supabase/supabaseClient';
 
 const app = express();
@@ -18,9 +19,9 @@ app.post('/create', async (req: express.Request, res: express.Response) => {
         const user = req.query.name as string;
 
         await supabaseDB.createUser(user);
+
         res.send('User created ' + user + ' successfully');
     } catch (error) {
-        console.error(error);
         res.status(500).send('An error occurred while creating the user');
     }
 });
@@ -44,7 +45,6 @@ app.post('/update', async (req: express.Request, res: express.Response) => {
 
         res.send('User N°' +  userID + 'got his name updated to ' + name + ' successfully');
     } catch (error) {
-        console.error(error);
         res.status(500).send('An error occurred while updating the user');
     }
 });

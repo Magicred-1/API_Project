@@ -7,7 +7,9 @@ export class Space {
     type: string;
     capacity: number;
     duration: string;
+    // Maybe make this an array of strings
     openingHours: string;
+    // Maybe make this an array of strings (too !)
     closingHours: string;
     disabledAccess: boolean;
     maintenance: boolean;

@@ -9,11 +9,13 @@ export class Employee {
         this.availabilities = availabilities;
     }
 
-    checkAvailability(date: string) {
+    checkAvailability(date: string): boolean {
         this.availabilities.forEach((availability) => {
             if (availability === date) {
                 console.log('Employee is available on this date');
             }
+            return true;
         });
+        return false;
     }
 }
