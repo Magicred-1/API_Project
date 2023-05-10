@@ -36,4 +36,4 @@ You can then install the required dependencies using npm install, compile and ru
 Once the server is running, you can access the API endpoints using your preferred HTTP client. See the documentation for a full list of available endpoints and their parameters.
 
 ## Contributors
-This API was developed by D.Gadiou (@Magicred_1) / A.Duquenne (@WizerZ) / A.GomezDelToro (@AugustinGomezDelToro).
+This API was developed by D.Gadiou (@Magicred_1) / A.Duquenne (@WizerZ) / A.GomezDelToro (@AgustinGomezDelToro).
