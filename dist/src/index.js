@@ -20,4 +20,5 @@ __exportStar(require("./space/space.class"), exports);
 __exportStar(require("./employee/employee.class"), exports);
 __exportStar(require("./animal/animal.class"), exports);
 __exportStar(require("./zoo/zoo.class"), exports);
+__exportStar(require("./tokenAuthenfication/authMiddleware"), exports);
 //# sourceMappingURL=index.js.map

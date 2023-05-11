@@ -1,4 +1,27 @@
 "use strict";
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -8,9 +31,13 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const supabase_js_1 = require("@supabase/supabase-js");
-const dotenv = require("dotenv");
+const dotenv = __importStar(require("dotenv"));
+const authMiddleware_1 = __importDefault(require("../tokenAuthenfication/authMiddleware"));
 dotenv.config();
 class SupabaseDB {
     constructor() {
@@ -22,10 +49,10 @@ class SupabaseDB {
         // Assign the supabase instance to the supabase property
         this.supabase = (0, supabase_js_1.createClient)(this.supabaseUrl, this.supabaseKey);
         if (!this.supabase) {
-            throw new Error('Supabase is not initialized');
+            throw new Error('Supabase is not initialized with the correct credentials or the Supabase URL and key are not defined');
         }
         else {
-            console.log('Supabase is initialized');
+            console.log('Supabase has been initialized successfully');
         }
     }
     /*
@@ -188,15 +215,19 @@ class SupabaseDB {
             }
         });
     }
-    // POST /employees
-    createEmployee(name, role, availabilities) {
+    // TODO: Add availabilities to employee
+    createEmployee(name, role) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { data: employee, error } = yield this.supabase.from("employees").insert([{ name, role, availabilities }]);
-            if (error) {
-                console.error(error);
+            try {
+                const api_key = authMiddleware_1.default.generateAPIKey();
+                const { data: employee, error } = yield this.supabase.from("employees").insert([{ name, role, api_key }]);
+                if (error) {
+                    console.error(error);
+                }
+                return employee;
             }
-            else {
-                console.log(employee);
+            catch (error) {
+                console.error(error);
             }
         });
     }
@@ -252,7 +283,7 @@ class SupabaseDB {
         });
     }
     // POST /employees/availabilities
-    createEmployeeAvailability(employee_id, day, start_time, end_time) {
+    addEmployeeAvailability(employee_id, day, start_time, end_time) {
         return __awaiter(this, void 0, void 0, function* () {
             const { data: employeeAvailability, error } = yield this.supabase.from("employees_availabilities").insert([{ employee_id, day, start_time, end_time }]);
             if (error) {

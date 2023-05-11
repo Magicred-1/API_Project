@@ -1,6 +1,6 @@
 import { createClient } from '@supabase/supabase-js'
-
 import * as dotenv from 'dotenv';
+import AuthMiddleware from '../tokenAuthenfication/authMiddleware';
 
 dotenv.config();
 
@@ -63,7 +63,7 @@ class SupabaseDB {
     }
 
     // POST /spaces
-    async createSpace(name: string, description: string, capacity: number) {
+    async createSpace(name: string, description: string, capacity: string) {
         const { data: space, error } = await this.supabase.from("spaces").insert([{ name, description, capacity }]);
         if (error) {
             console.error(error);
@@ -169,15 +169,21 @@ class SupabaseDB {
         }
     }
 
-    // POST /employees
-    async createEmployee(name: string, role: string, availabilities: string[]) {
-        const { data: employee, error } = await this.supabase.from("employees").insert([{ name, role, availabilities }]);
-        if (error) {
+    // TODO: Add availabilities to employee
+    async createEmployee(name: string, role: string) {
+        try {
+            const api_key = AuthMiddleware.generateAPIKey();
+            const { data: employee, error } = await this.supabase.from("employees").insert([{ name, role, api_key }]);
+        
+            if (error) {
+                console.error(error);
+            }
+            return employee;
+        } catch (error) {
             console.error(error);
-        } else {
-            console.log(employee);
         }
     }
+    
 
     // PUT /employees/:id
     async updateEmployee(id: number, name: string, role: string, availabilities: string[]) {
@@ -224,7 +230,7 @@ class SupabaseDB {
     }
 
     // POST /employees/availabilities
-    async createEmployeeAvailability(employee_id: number, day: string, start_time: string, end_time: string) {
+    async addEmployeeAvailability(employee_id: number, day: string, start_time: string, end_time: string) {
         const { data: employeeAvailability, error } = await this.supabase.from("employees_availabilities").insert([{ employee_id, day, start_time, end_time }]);
         if (error) {
             console.error(error);
