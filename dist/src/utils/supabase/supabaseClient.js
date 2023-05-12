@@ -137,7 +137,7 @@ class SupabaseDB {
                 console.error(error);
             }
             else {
-                console.log(animals);
+                return animals;
             }
         });
     }
@@ -149,14 +149,16 @@ class SupabaseDB {
                 console.error(error);
             }
             else {
-                console.log(animal);
+                return animal;
             }
         });
     }
     // POST /animals
     createAnimal(name, species, age, space_id) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { data: animal, error } = yield this.supabase.from("animals").insert([{ name, species, age, space_id }]);
+            const { data: animal, error } = yield this.supabase
+                .from("animals")
+                .insert([{ name, species, age, space_id }]);
             if (error) {
                 console.error(error);
             }
@@ -168,7 +170,10 @@ class SupabaseDB {
     // PUT /animals/:id
     updateAnimal(id, name, species, age, space_id) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { data: animal, error } = yield this.supabase.from("animals").update({ name, species, age, space_id }).eq('id', id);
+            const { data: animal, error } = yield this.supabase
+                .from("animals")
+                .update({ name, species, age, space_id })
+                .eq('id', id);
             if (error) {
                 console.error(error);
             }
@@ -177,14 +182,18 @@ class SupabaseDB {
             }
         });
     }
+    // DELETE /animals/:id
     deleteAnimal(id) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { data: animal, error } = yield this.supabase.from("animals").delete().eq('id', id);
+            const { data: animal, error } = yield this.supabase
+                .from("animals")
+                .delete()
+                .eq('id', id);
             if (error) {
                 console.error(error);
             }
             else {
-                console.log(animal);
+                return animal;
             }
         });
     }
@@ -194,33 +203,40 @@ class SupabaseDB {
     // GET /employees
     fetchEmployees() {
         return __awaiter(this, void 0, void 0, function* () {
-            const { data: employees, error } = yield this.supabase.from("employees").select("*");
+            const { data: employees, error } = yield this.supabase
+                .from("employees")
+                .select("name, created_at, role, availabilities");
             if (error) {
                 console.error(error);
             }
             else {
-                console.log(employees);
+                return employees;
             }
         });
     }
     // GET /employees/:id
     fetchEmployeeById(id) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { data: employee, error } = yield this.supabase.from("employees").select("*").eq('id', id);
+            const { data: employee, error } = yield this.supabase
+                .from("employees")
+                .select("id, name, created_at, role, availabilities")
+                .eq('id', id);
             if (error) {
                 console.error(error);
             }
             else {
-                console.log(employee);
+                return employee;
             }
         });
     }
     // TODO: Add availabilities to employee
-    createEmployee(name, role) {
+    createEmployee(name, role, availabilities) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 const api_key = authMiddleware_1.default.generateAPIKey();
-                const { data: employee, error } = yield this.supabase.from("employees").insert([{ name, role, api_key }]);
+                const { data: employee, error } = yield this.supabase
+                    .from("employees")
+                    .insert([{ name, role, availabilities, api_key }]);
                 if (error) {
                     console.error(error);
                 }
@@ -234,7 +250,9 @@ class SupabaseDB {
     // PUT /employees/:id
     updateEmployee(id, name, role, availabilities) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { data: employee, error } = yield this.supabase.from("employees").update({ name, role, availabilities }).eq('id', id);
+            const { data: employee, error } = yield this.supabase
+                .from("employees")
+                .update({ name, role, availabilities }).eq('id', id);
             if (error) {
                 console.error(error);
             }
@@ -246,7 +264,10 @@ class SupabaseDB {
     // DELETE /employees/:id
     deleteEmployee(id) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { data: employee, error } = yield this.supabase.from("employees").delete().eq('id', id);
+            const { data: employee, error } = yield this.supabase
+                .from("employees")
+                .delete()
+                .eq('id', id);
             if (error) {
                 console.error(error);
             }
@@ -261,43 +282,51 @@ class SupabaseDB {
     // GET /employees/availabilities/
     fetchEmployeesAvailabilities() {
         return __awaiter(this, void 0, void 0, function* () {
-            const { data: employeesAvailabilities, error } = yield this.supabase.from("employees_availabilities").select("*");
+            const { data: employeesAvailabilities, error } = yield this.supabase
+                .from("employees_availabilities")
+                .select("*");
             if (error) {
                 console.error(error);
             }
             else {
-                console.log(employeesAvailabilities);
+                return employeesAvailabilities;
             }
         });
     }
     // GET /employees/availabilities/:id
     fetchEmployeeAvailabilityById(id) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { data: employeeAvailability, error } = yield this.supabase.from("employees_availabilities").select("*").eq('id', id);
+            const { data: employeeAvailability, error } = yield this.supabase
+                .from("employees")
+                .select("availabilities")
+                .eq('id', id);
             if (error) {
                 console.error(error);
             }
             else {
-                console.log(employeeAvailability);
+                return employeeAvailability;
             }
         });
     }
-    // POST /employees/availabilities
-    addEmployeeAvailability(employee_id, day, start_time, end_time) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const { data: employeeAvailability, error } = yield this.supabase.from("employees_availabilities").insert([{ employee_id, day, start_time, end_time }]);
-            if (error) {
-                console.error(error);
-            }
-            else {
-                console.log(employeeAvailability);
-            }
-        });
-    }
+    // TODO: Add availabilities to employee
+    // // POST /employees/availabilities
+    // async addEmployeeAvailability(employee_id: number, day: string, start_time: string, end_time: string) {
+    //     const { data: employeeAvailability, error } = await this.supabase
+    //     .from("employees_availabilities")
+    //     .insert([{ employee_id, day, start_time, end_time }]);
+    //     if (error) {
+    //         console.error(error);
+    //     } else {
+    //         console.log(employeeAvailability);
+    //     }
+    // }
     // PUT /employees/availabilities/:id
     updateEmployeeAvailability(id, employee_id, day, start_time, end_time) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { data: employeeAvailability, error } = yield this.supabase.from("employees_availabilities").update({ employee_id, day, start_time, end_time }).eq('id', id);
+            const { data: employeeAvailability, error } = yield this.supabase.
+                from("employees_availabilities").
+                update({ employee_id, day, start_time, end_time }).
+                eq('id', id);
             if (error) {
                 console.error(error);
             }
@@ -309,7 +338,10 @@ class SupabaseDB {
     // DELETE /employees/availabilities/:id
     deleteEmployeeAvailability(id) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { data: employeeAvailability, error } = yield this.supabase.from("employees_availabilities").delete().eq('id', id);
+            const { data: employeeAvailability, error } = yield this.supabase
+                .from("employees_availabilities")
+                .delete()
+                .eq('id', id);
             if (error) {
                 console.error(error);
             }

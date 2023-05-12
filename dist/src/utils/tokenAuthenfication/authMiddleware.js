@@ -13,7 +13,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const crypto_js_1 = require("crypto-js");
-const crypto_js_2 = require("crypto-js");
+const supabaseClient_1 = __importDefault(require("../supabase/supabaseClient"));
 const randomstring_1 = __importDefault(require("randomstring"));
 class AuthMiddleware {
     generateAPIKey() {
@@ -31,15 +31,50 @@ class AuthMiddleware {
         return __awaiter(this, void 0, void 0, function* () {
             const apiKey = req.headers['x-api-key'];
             if (!apiKey) {
-                return res.status(401).json({ message: 'No API key provided' });
+                res.status(401).json({
+                    message: 'API key is missing',
+                });
             }
-            if (!process.env.API_KEY_SECRET) {
-                throw new Error('API key secret is not defined');
+            else {
+                const { data: apiKeyData, error } = yield supabaseClient_1.default.supabase
+                    .from('employees')
+                    .select('*')
+                    .eq('api_key', apiKey);
+                if (error) {
+                    res.status(500).json({
+                        message: 'Internal server error',
+                    });
+                }
+                else if (apiKeyData.length === 0) {
+                    res.status(401).json({
+                        message: 'API key is invalid',
+                    });
+                }
+                else {
+                    return next();
+                }
             }
-            const decryptedAPIKey = crypto_js_1.AES.decrypt(apiKey, process.env.API_KEY_SECRET).toString(crypto_js_2.enc.Utf8);
-            console.log(decryptedAPIKey);
-            if (decryptedAPIKey !== process.env.API_KEY) {
-                return res.status(401).json({ message: 'Invalid API key' });
+        });
+    }
+    getAPIKeyByEmployeeName(name) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const { data: employees, error } = yield supabaseClient_1.default.supabase
+                    .from('employees')
+                    .select('api_key')
+                    .eq('name', name)
+                    .single();
+                if (error) {
+                    console.error(error);
+                    return Promise.reject(error);
+                }
+                else {
+                    return Promise.resolve(employees.api_key);
+                }
+            }
+            catch (error) {
+                console.error(error);
+                return Promise.reject(error);
             }
         });
     }

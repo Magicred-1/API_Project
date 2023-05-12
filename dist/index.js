@@ -13,18 +13,19 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
-const supabaseClient_1 = __importDefault(require("./src/supabase/supabaseClient"));
-const authMiddleware_1 = __importDefault(require("./src/tokenAuthenfication/authMiddleware"));
+const supabaseClient_1 = __importDefault(require("./src/utils/supabase/supabaseClient"));
+const authMiddleware_1 = __importDefault(require("./src/utils/tokenAuthenfication/authMiddleware"));
+const authMiddleware_2 = __importDefault(require("./src/utils/tokenAuthenfication/authMiddleware"));
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
 app.listen(3000, () => {
     console.log('Server is running on port 3000');
 });
-app.get('/', authMiddleware_1.default.checkAPIKey, (req, res) => {
+app.get('/', authMiddleware_2.default.checkAPIKey, (req, res) => {
     res.send('Default route');
 });
-// GET /spaces
-app.get('/spaces', authMiddleware_1.default.checkAPIKey, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+// GET /spaces + API Key
+app.get('/spaces', authMiddleware_2.default.checkAPIKey, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const spaces = yield supabaseClient_1.default.fetchSpaces();
         res.send(spaces);
@@ -33,8 +34,8 @@ app.get('/spaces', authMiddleware_1.default.checkAPIKey, (req, res) => __awaiter
         res.status(500).send('An error occurred while fetching spaces');
     }
 }));
-// GET /spaces/:id
-app.get('/spaces/:id', authMiddleware_1.default.checkAPIKey, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+// GET /spaces/:id + API Key
+app.get('/spaces/:id', authMiddleware_2.default.checkAPIKey, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const space = yield supabaseClient_1.default.fetchSpaceById(parseInt(req.params.id));
         res.send(space);
@@ -43,8 +44,8 @@ app.get('/spaces/:id', authMiddleware_1.default.checkAPIKey, (req, res) => __awa
         res.status(500).send('An error occurred while fetching space');
     }
 }));
-// POST /spaces
-app.post('/spaces', authMiddleware_1.default.checkAPIKey, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+// POST /spaces + API Key
+app.post('/spaces', authMiddleware_2.default.checkAPIKey, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { name, description, capacity } = req.params;
         yield supabaseClient_1.default.createSpace(name, description, capacity);
@@ -54,15 +55,26 @@ app.post('/spaces', authMiddleware_1.default.checkAPIKey, (req, res) => __awaite
         res.status(500).send('An error occurred while creating space');
     }
 }));
-// POST /employees/create?name=John&role=Manager
-app.post('/employees/create', authMiddleware_1.default.checkAPIKey, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+// GET /employees + API Key
+app.get('/employees', authMiddleware_2.default.checkAPIKey, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const { name, role } = req.query;
-        yield supabaseClient_1.default.createEmployee(name, role);
-        res.send('Employee ' + name + ' created');
+        const employees = yield supabaseClient_1.default.fetchEmployees();
+        res.send(employees);
     }
     catch (error) {
-        console.error(error);
+        res.status(500).send('An error occurred while fetching employees');
+    }
+}));
+// POST /employees/create?name=John&role=Manager&availabilities={Monday,Tuesday} + API Key
+app.post('/employees/create', authMiddleware_2.default.checkAPIKey, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const { name, role } = req.query;
+        const availabilities = req.query.availabilities;
+        yield supabaseClient_1.default.createEmployee(name, role, availabilities);
+        const apiKey = yield authMiddleware_1.default.getAPIKeyByEmployeeName(name);
+        res.send(`Employee ${name} created successfully, here's the API key for the user: ${apiKey}`);
+    }
+    catch (error) {
         res.status(500).send('An error occurred while creating employee');
     }
 }));

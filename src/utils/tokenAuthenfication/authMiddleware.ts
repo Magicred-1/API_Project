@@ -52,7 +52,26 @@ class AuthMiddleware {
       }
     }
   }
-}
 
+  public async getAPIKeyByEmployeeName(name: string): Promise<string> {
+    try {
+      const { data: employees, error } = await supabaseDB.supabase
+        .from('employees')
+        .select('api_key')
+        .eq('name', name)
+        .single();
+  
+      if (error) {
+        console.error(error);
+        return Promise.reject(error);
+      } else {
+        return Promise.resolve(employees.api_key);
+      }
+    } catch (error) {
+      console.error(error);
+      return Promise.reject(error);
+    }
+  }
+}
 
 export default new AuthMiddleware();

@@ -14,11 +14,11 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(require("./supabase/supabaseClient"), exports);
-__exportStar(require("./ticket/ticket.class"), exports);
-__exportStar(require("./space/space.class"), exports);
-__exportStar(require("./employee/employee.class"), exports);
-__exportStar(require("./animal/animal.class"), exports);
-__exportStar(require("./zoo/zoo.class"), exports);
-__exportStar(require("./tokenAuthenfication/authMiddleware"), exports);
+__exportStar(require("./utils/supabase/supabaseClient"), exports);
+__exportStar(require("./classes/ticket/ticket.class"), exports);
+__exportStar(require("./classes/space/space.class"), exports);
+__exportStar(require("./classes/employee/employee.class"), exports);
+__exportStar(require("./classes/animal/animal.class"), exports);
+__exportStar(require("./classes/zoo/zoo.class"), exports);
+__exportStar(require("./utils/tokenAuthenfication/authMiddleware"), exports);
 //# sourceMappingURL=index.js.map

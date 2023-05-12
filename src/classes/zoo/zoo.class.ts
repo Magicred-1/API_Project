@@ -1,7 +1,7 @@
-import { Space } from '../index';
-import { Animal } from '../index';
-import { Employee } from '../index';
-import { Ticket } from '../index';
+import { Space } from '../../index';
+import { Animal } from '../../index';
+import { Employee } from '../../index';
+import { Ticket } from '../../index';
 
 export class Zoo {
     name: string;
