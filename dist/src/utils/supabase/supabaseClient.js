@@ -38,6 +38,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const supabase_js_1 = require("@supabase/supabase-js");
 const dotenv = __importStar(require("dotenv"));
 const authMiddleware_1 = __importDefault(require("../tokenAuthenfication/authMiddleware"));
+const safe_1 = __importDefault(require("colors/safe"));
 dotenv.config();
 class SupabaseDB {
     constructor() {
@@ -52,7 +53,7 @@ class SupabaseDB {
             throw new Error('Supabase is not initialized with the correct credentials or the Supabase URL and key are not defined');
         }
         else {
-            console.log('Supabase has been initialized successfully');
+            console.log(safe_1.default.blue('Supabase has been initialized successfully'));
         }
     }
     /*
@@ -69,7 +70,9 @@ class SupabaseDB {
     // GET /spaces
     fetchSpaces() {
         return __awaiter(this, void 0, void 0, function* () {
-            const { data: spaces, error } = yield this.supabase.from("spaces").select("*");
+            const { data: spaces, error } = yield this.supabase
+                .from("spaces")
+                .select("*");
             if (error) {
                 console.error(error);
             }
@@ -81,7 +84,10 @@ class SupabaseDB {
     // GET /spaces/:id
     fetchSpaceById(id) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { data: space, error } = yield this.supabase.from("spaces").select("*").eq('id', id);
+            const { data: space, error } = yield this.supabase
+                .from("spaces")
+                .select("*")
+                .eq('id', id);
             if (error) {
                 return error;
             }
@@ -93,7 +99,9 @@ class SupabaseDB {
     // POST /spaces
     createSpace(name, description, capacity) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { data: space, error } = yield this.supabase.from("spaces").insert([{ name, description, capacity }]);
+            const { data: space, error } = yield this.supabase
+                .from("spaces")
+                .insert([{ name, description, capacity }]);
             if (error) {
                 console.error(error);
             }
@@ -105,7 +113,10 @@ class SupabaseDB {
     // PUT /spaces/:id
     updateSpace(id, name, description, capacity) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { data: space, error } = yield this.supabase.from("spaces").update({ name, description, capacity }).eq('id', id);
+            const { data: space, error } = yield this.supabase
+                .from("spaces")
+                .update({ name, description, capacity })
+                .eq('id', id);
             if (error) {
                 console.error(error);
             }
@@ -117,7 +128,10 @@ class SupabaseDB {
     // DELETE /spaces/:id
     deleteSpace(id) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { data: space, error } = yield this.supabase.from("spaces").delete().eq('id', id);
+            const { data: space, error } = yield this.supabase
+                .from("spaces")
+                .delete()
+                .eq('id', id);
             if (error) {
                 return error;
             }
@@ -132,7 +146,9 @@ class SupabaseDB {
     // GET /animals
     fetchAnimals() {
         return __awaiter(this, void 0, void 0, function* () {
-            const { data: animals, error } = yield this.supabase.from("animals").select("*");
+            const { data: animals, error } = yield this.supabase
+                .from("animals")
+                .select("*");
             if (error) {
                 console.error(error);
             }
@@ -144,7 +160,10 @@ class SupabaseDB {
     // GET /animals/:id
     fetchAnimalById(id) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { data: animal, error } = yield this.supabase.from("animals").select("*").eq('id', id);
+            const { data: animal, error } = yield this.supabase
+                .from("animals")
+                .select("*")
+                .eq('id', id);
             if (error) {
                 console.error(error);
             }
@@ -153,7 +172,7 @@ class SupabaseDB {
             }
         });
     }
-    // POST /animals
+    // POST /animals/create
     createAnimal(name, species, age, space_id) {
         return __awaiter(this, void 0, void 0, function* () {
             const { data: animal, error } = yield this.supabase
@@ -163,11 +182,11 @@ class SupabaseDB {
                 console.error(error);
             }
             else {
-                console.log(animal);
+                return animal;
             }
         });
     }
-    // PUT /animals/:id
+    // PUT /animals/update/:id
     updateAnimal(id, name, species, age, space_id) {
         return __awaiter(this, void 0, void 0, function* () {
             const { data: animal, error } = yield this.supabase
@@ -205,7 +224,7 @@ class SupabaseDB {
         return __awaiter(this, void 0, void 0, function* () {
             const { data: employees, error } = yield this.supabase
                 .from("employees")
-                .select("name, created_at, role, availabilities");
+                .select("id, name, created_at, role, availabilities");
             if (error) {
                 console.error(error);
             }
@@ -229,7 +248,6 @@ class SupabaseDB {
             }
         });
     }
-    // TODO: Add availabilities to employee
     createEmployee(name, role, availabilities) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
@@ -320,13 +338,13 @@ class SupabaseDB {
     //         console.log(employeeAvailability);
     //     }
     // }
-    // PUT /employees/availabilities/:id
-    updateEmployeeAvailability(id, employee_id, day, start_time, end_time) {
+    // PUT /employees/availabilities/:id // TODO: Fix
+    updateEmployeeAvailability(employee_id, day, start_time, end_time) {
         return __awaiter(this, void 0, void 0, function* () {
             const { data: employeeAvailability, error } = yield this.supabase.
                 from("employees_availabilities").
                 update({ employee_id, day, start_time, end_time }).
-                eq('id', id);
+                eq('id', employee_id);
             if (error) {
                 console.error(error);
             }
@@ -348,6 +366,34 @@ class SupabaseDB {
             else {
                 console.log(employeeAvailability);
             }
+        });
+    }
+    // Admins
+    isAdmin(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { data: admin, error } = yield this.supabase
+                .from("employees")
+                .select("role")
+                .eq('id', id)
+                .single();
+            if (error) {
+                console.error(error);
+            }
+            return admin.role ? admin.role === "admin" || admin.role === "Admin" : false;
+        });
+    }
+    // Veternarians
+    isVet(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { data: vet, error } = yield this.supabase
+                .from("employees")
+                .select("role")
+                .eq('id', id)
+                .single();
+            if (error) {
+                console.error(error);
+            }
+            return vet.role ? vet.role === "vet" || vet.role === "Vet" : false;
         });
     }
 }

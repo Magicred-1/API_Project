@@ -1,6 +1,7 @@
 import { createClient } from '@supabase/supabase-js'
 import * as dotenv from 'dotenv';
 import AuthMiddleware from '../tokenAuthenfication/authMiddleware';
+import colors from 'colors/safe';
 
 dotenv.config();
 
@@ -8,7 +9,7 @@ class SupabaseDB {
     supabaseUrl: string | undefined;
     supabaseKey: string | undefined;
     // Define supabase as a property of the class
-    supabase: any; 
+    supabase: any;
 
     constructor() {
         this.supabaseUrl = process.env.SUPABASE_URL;
@@ -25,7 +26,7 @@ class SupabaseDB {
             throw new Error('Supabase is not initialized with the correct credentials or the Supabase URL and key are not defined');
         }
         else {
-            console.log('Supabase has been initialized successfully');
+            console.log(colors.blue('Supabase has been initialized successfully'));
         }
     }
 
@@ -44,7 +45,10 @@ class SupabaseDB {
 
     // GET /spaces
     async fetchSpaces() {
-        const { data: spaces, error } = await this.supabase.from("spaces").select("*");
+        const { data: spaces, error } = await this.supabase
+        .from("spaces")
+        .select("*");
+
         if (error) {
             console.error(error);
         } else {
@@ -54,7 +58,11 @@ class SupabaseDB {
 
     // GET /spaces/:id
     async fetchSpaceById(id: number) {
-        const { data: space, error } = await this.supabase.from("spaces").select("*").eq('id', id);
+        const { data: space, error } = await this.supabase
+        .from("spaces")
+        .select("*")
+        .eq('id', id);
+
         if (error) {
             return error;
         } else {
@@ -64,7 +72,10 @@ class SupabaseDB {
 
     // POST /spaces
     async createSpace(name: string, description: string, capacity: string) {
-        const { data: space, error } = await this.supabase.from("spaces").insert([{ name, description, capacity }]);
+        const { data: space, error } = await this.supabase
+        .from("spaces")
+        .insert([{ name, description, capacity }]);
+
         if (error) {
             console.error(error);
         } else {
@@ -74,7 +85,11 @@ class SupabaseDB {
 
     // PUT /spaces/:id
     async updateSpace(id: number, name: string, description: string, capacity: number) {
-        const { data: space, error } = await this.supabase.from("spaces").update({ name, description, capacity }).eq('id', id);
+        const { data: space, error } = await this.supabase
+        .from("spaces")
+        .update({ name, description, capacity })
+        .eq('id', id);
+
         if (error) {
             console.error(error);
         } else {
@@ -84,7 +99,11 @@ class SupabaseDB {
 
     // DELETE /spaces/:id
     async deleteSpace(id: number) {
-        const { data: space, error } = await this.supabase.from("spaces").delete().eq('id', id);
+        const { data: space, error } = await this.supabase
+        .from("spaces")
+        .delete()
+        .eq('id', id);
+
         if (error) {
             return error;
         } else {
@@ -98,7 +117,10 @@ class SupabaseDB {
 
     // GET /animals
     async fetchAnimals() {
-        const { data: animals, error } = await this.supabase.from("animals").select("*");
+        const { data: animals, error } = await this.supabase
+        .from("animals")
+        .select("*");
+
         if (error) {
             console.error(error);
         } else {
@@ -108,7 +130,11 @@ class SupabaseDB {
 
     // GET /animals/:id
     async fetchAnimalById(id: number) {
-        const { data: animal, error } = await this.supabase.from("animals").select("*").eq('id', id);
+        const { data: animal, error } = await this.supabase
+        .from("animals")
+        .select("*")
+        .eq('id', id);
+
         if (error) {
             console.error(error);
         } else {
@@ -116,7 +142,7 @@ class SupabaseDB {
         }
     }
 
-    // POST /animals
+    // POST /animals/create
     async createAnimal(name: string, species: string, age: number, space_id: number) {
         const { data: animal, error } = await this.supabase
         .from("animals")
@@ -125,11 +151,11 @@ class SupabaseDB {
         if (error) {
             console.error(error);
         } else {
-            console.log(animal);
+            return animal;
         }
     }
 
-    // PUT /animals/:id
+    // PUT /animals/update/:id
     async updateAnimal(id: number, name: string, species: string, age: number, space_id: number) {
         const { data: animal, error } = await this.supabase
         .from("animals")
@@ -165,7 +191,7 @@ class SupabaseDB {
     async fetchEmployees() {
         const { data: employees, error } = await this.supabase
         .from("employees")
-        .select("name, created_at, role, availabilities");
+        .select("id, name, created_at, role, availabilities");
 
         if (error) {
             console.error(error);
@@ -188,7 +214,6 @@ class SupabaseDB {
         }
     }
 
-    // TODO: Add availabilities to employee
     async createEmployee(name: string, role: string, availabilities: string[]) {
         try {
             const api_key = AuthMiddleware.generateAPIKey();
@@ -204,10 +229,9 @@ class SupabaseDB {
             console.error(error);
         }
     }
-    
 
     // PUT /employees/:id
-    async updateEmployee(id: number, name: string, role: string, availabilities: string[]) {
+    async updateEmployee(id: number, name?: string, role?: string, availabilities?: string[]) {
         const { data: employee, error } = await this.supabase
         .from("employees")
         .update({ name, role, availabilities }).eq('id', id);
@@ -256,6 +280,7 @@ class SupabaseDB {
         .from("employees")
         .select("availabilities")
         .eq('id', id);
+        
         if (error) {
             console.error(error);
         } else {
@@ -276,12 +301,12 @@ class SupabaseDB {
     //     }
     // }
 
-    // PUT /employees/availabilities/:id
-    async updateEmployeeAvailability(id: number, employee_id: number, day: string, start_time: string, end_time: string) {
+    // PUT /employees/availabilities/:id // TODO: Fix
+    async updateEmployeeAvailability(employee_id: number, day: string, start_time: string, end_time: string) {
         const { data: employeeAvailability, error } = await this.supabase.
         from("employees_availabilities").
         update({ employee_id, day, start_time, end_time }).
-        eq('id', id);
+        eq('id', employee_id);
 
         if (error) {
             console.error(error);
@@ -296,11 +321,40 @@ class SupabaseDB {
         .from("employees_availabilities")
         .delete()
         .eq('id', id);
+
         if (error) {
             console.error(error);
         } else {
             console.log(employeeAvailability);
         }
+    }
+
+    // Admins
+    async isAdmin(id: number): Promise<boolean> {
+        const { data: admin, error } = await this.supabase
+        .from("employees")
+        .select("role")
+        .eq('id', id)
+        .single();
+
+        if (error) {
+            console.error(error);
+        }
+        return admin.role ? admin.role === "admin" || admin.role === "Admin" : false;
+    }
+
+    // Veternarians
+    async isVet(id: number): Promise<boolean> {
+        const { data: vet, error } = await this.supabase
+        .from("employees")
+        .select("role")
+        .eq('id', id)
+        .single();
+
+        if (error) {
+            console.error(error);
+        }
+        return vet.role ? vet.role === "vet" || vet.role === "Vet" : false;
     }
 }
 

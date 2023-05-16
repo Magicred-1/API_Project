@@ -33,7 +33,71 @@ You will also need to create a Supabase admin account and add the appropriate va
 
 You can then install the required dependencies using npm install, compile and run the server using ```npm run buildandrun```.
 
-Once the server is running, you can access the API endpoints using your preferred HTTP client. See the documentation for a full list of available endpoints and their parameters.
+Once the server is running, you can access the API endpoints using your preferred HTTP client (example: Postman). See the documentation for a full list of available endpoints and their parameters.
+
+## Documentation
+# API Documentation
+The API Key need to be passed in the header of each request as ```x-api-key```.
+
+## Employees
+### Get all employees
+```GET /employees```
+
+### Get employee by id
+```GET /employees/:id```
+
+### Create employee
+```POST /employees/create``` with query parameters:
+- name: string
+- role: string
+- availabilities: string
+
+### Update employee
+```PUT /employees/:id``` with query parameters:
+- name: string
+- role: string
+- availabilities: string
+
+### Delete employee
+```DELETE /employees/delete/:id```
+
+## Spaces
+### Get all spaces
+```GET /spaces```
+
+### Get space by id
+```GET /spaces/:id```
+
+### Create space
+```POST /spaces/create``` with query parameters:
+- name: string
+- description: string
+- capacity: string
+
+### Update space
+```PUT /spaces/:id``` with query parameters:
+- name: string
+- description: string
+- capacity: string
+
+### Delete space
+```DELETE /spaces/delete/:id```
+
+## Animals
+### Get all animals
+```GET /animals```
+
+### Get animal by id
+```GET /animals/:id```
+
+### Create animal
+```POST /animals/create``` with query parameters:
+- name: string
+- species: string
+- space_id: string
+
+## API Key Generation
+API Keys are generated using the ```generateAPIKey()``` function in the ```authMiddleware.ts``` file located in ```./tokenAuthenfication/authMiddleware.ts```. This function returns a string and then stores it in the database when a new employee is created. The API Key is then used to authenticate the employee when they make a request to the API.
 
 ## Contributors
 This API was developed by D.Gadiou (@Magicred_1) / A.Duquenne (@WizerZ) / A.GomezDelToro (@AgustinGomezDelToro).

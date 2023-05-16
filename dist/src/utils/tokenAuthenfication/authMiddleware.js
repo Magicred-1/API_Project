@@ -47,7 +47,7 @@ class AuthMiddleware {
                 }
                 else if (apiKeyData.length === 0) {
                     res.status(401).json({
-                        message: 'API key is invalid',
+                        message: 'API key cannot be found',
                     });
                 }
                 else {
