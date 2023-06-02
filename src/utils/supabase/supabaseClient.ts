@@ -26,7 +26,7 @@ class SupabaseDB {
             throw new Error('Supabase is not initialized with the correct credentials or the Supabase URL and key are not defined');
         }
         else {
-            console.log(colors.blue('Supabase has been initialized successfully'));
+            console.log(colors.bgGreen('Supabase has been initialized successfully'));
         }
     }
 
@@ -83,7 +83,7 @@ class SupabaseDB {
         }
     }
 
-    // PUT /spaces/:id
+    // PATCH /spaces/:id
     async updateSpace(id: number, name: string, description: string, capacity: number) {
         const { data: space, error } = await this.supabase
         .from("spaces")
@@ -143,10 +143,10 @@ class SupabaseDB {
     }
 
     // POST /animals/create
-    async createAnimal(name: string, species: string, age: number, space_id: number) {
+    async createAnimal(name: string, species: string, age: number, space_id: number, treatments: string[]) {
         const { data: animal, error } = await this.supabase
         .from("animals")
-        .insert([{ name, species, age, space_id }]);
+        .insert([{ name, species, age, space_id, treatments }]);
 
         if (error) {
             console.error(error);
@@ -214,7 +214,7 @@ class SupabaseDB {
         }
     }
 
-    async createEmployee(name: string, role: string, availabilities: string[]) {
+    async createEmployee(name: string, role: string, availabilities: string[]): Promise<any> {
         try {
             const api_key = AuthMiddleware.generateAPIKey();
             const { data: employee, error } = await this.supabase
@@ -224,13 +224,13 @@ class SupabaseDB {
             if (error) {
                 console.error(error);
             }
-            return employee;
+            return Promise.resolve(employee);
         } catch (error) {
             console.error(error);
         }
     }
 
-    // PUT /employees/:id
+    // PATCH /employees/:id
     async updateEmployee(id: number, name?: string, role?: string, availabilities?: string[]) {
         const { data: employee, error } = await this.supabase
         .from("employees")

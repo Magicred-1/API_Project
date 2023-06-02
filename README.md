@@ -29,9 +29,9 @@ This API was built using the following technologies:
 ## Getting Started
 To use this API, you must first set up a Supabase database. You can find instructions for doing so in the Supabase documentation. Once you have set up your database, you will need to rename the .env.example file to .env and fill in the appropriate values for your database. 
 
-You will also need to create a Supabase admin account and add the appropriate values to the .env file.
+You will also need to create a Supabase admin account including a DB and add the appropriate values to the .env file.
 
-You can then install the required dependencies using npm install, compile and run the server using ```npm run buildandrun```.
+Once everything is done, you can then install the required dependencies using npm install, compile and run the server using ```npm run buildandrun```.
 
 Once the server is running, you can access the API endpoints using your preferred HTTP client (example: Postman). See the documentation for a full list of available endpoints and their parameters.
 
@@ -89,12 +89,31 @@ The API Key need to be passed in the header of each request as ```x-api-key```.
 
 ### Get animal by id
 ```GET /animals/:id```
+- id: number
 
 ### Create animal
 ```POST /animals/create``` with query parameters:
 - name: string
 - species: string
 - space_id: string
+
+### Update animal
+```PUT /animals/update/:id``` with query parameters:
+- name: string (optional)
+- species: string (optional)
+- space_id: string (optional)
+
+### Delete animal
+```DELETE /animals/delete/:id```
+- id: number
+
+## Tickets
+### Get all tickets
+```GET /tickets```
+
+### Get ticket by id
+```GET /tickets/:id```
+- id: number
 
 ## API Key Generation
 API Keys are generated using the ```generateAPIKey()``` function in the ```authMiddleware.ts``` file located in ```./tokenAuthenfication/authMiddleware.ts```. This function returns a string and then stores it in the database when a new employee is created. The API Key is then used to authenticate the employee when they make a request to the API.

@@ -15,6 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const supabaseClient_1 = __importDefault(require("./src/utils/supabase/supabaseClient"));
 const authMiddleware_1 = __importDefault(require("./src/utils/tokenAuthenfication/authMiddleware"));
+// import { Employee, Space, Ticket, Zoo, Animal } from './src/classes';
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
 app.listen(3000, () => {
@@ -44,7 +45,7 @@ app.get('/spaces/:id', authMiddleware_1.default.checkAPIKey, (req, res) => __awa
         res.status(500).send('An error occurred while fetching space');
     }
 }));
-// POST /spaces + API Key
+// POST /spaces/create?name=SpaceName&description=SpaceDescription&capacity=SpaceCapacity + API Key
 app.post('/spaces/create/', authMiddleware_1.default.checkAPIKey, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { name, description, capacity } = req.params;
@@ -80,7 +81,9 @@ app.get('/employees/:id', authMiddleware_1.default.checkAPIKey, (req, res) => __
             res.send(employee);
         }
         else {
-            res.status(404).send('No employee found');
+            res.status(404).json({
+                message: `No employee found with the id ${employeeID}`
+            });
         }
     }
     catch (error) {
@@ -171,12 +174,47 @@ app.get('/animals/:id', authMiddleware_1.default.checkAPIKey, (req, res) => __aw
 // POST /animals/create?name=John&species=Cat&age=2&space_id=1 + API Key
 app.post('/animals/create', authMiddleware_1.default.checkAPIKey, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const { name, species, age, space_id } = req.query;
-        yield supabaseClient_1.default.createAnimal(name, species, parseInt(age), parseInt(space_id));
+        const { name, species, age, space_id, treatments } = req.query;
+        yield supabaseClient_1.default.createAnimal(name, species, parseInt(age), parseInt(space_id), treatments);
         res.send(`Animal ${name} created successfully`);
     }
     catch (error) {
         res.status(500).send('An error occurred while creating animal');
+    }
+}));
+// POST /animals/delete/:id + API Key
+app.post('/animals/delete/:id', authMiddleware_1.default.checkAPIKey, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const animalID = parseInt(req.params.id);
+        const animal = yield supabaseClient_1.default.fetchAnimalById(animalID);
+        if (animal.length > 0) {
+            yield supabaseClient_1.default.deleteAnimal(animalID);
+            res.send(`Animal ${animal[0].name} deleted successfully`);
+        }
+        else {
+            res.status(404).send('No animal found');
+        }
+    }
+    catch (error) {
+        res.status(500).send('An error occurred while deleting animal');
+    }
+}));
+// PUT /animals/update/:id?name=John&species=Cat&age=2&space_id=1 + API Key
+app.put('/animals/update/:id', authMiddleware_1.default.checkAPIKey, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const animalID = parseInt(req.params.id);
+        const animal = yield supabaseClient_1.default.fetchAnimalById(animalID);
+        if (animal.length > 0) {
+            const { name, species, age, space_id } = req.query;
+            yield supabaseClient_1.default.updateAnimal(animalID, name, species, parseInt(age), parseInt(space_id));
+            res.send(`Animal ${name} updated successfully`);
+        }
+        else {
+            res.status(404).send('The animal does not exist please create it first');
+        }
+    }
+    catch (error) {
+        res.status(500).send('An error occurred while updating animal');
     }
 }));
 //# sourceMappingURL=index.js.map

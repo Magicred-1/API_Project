@@ -53,7 +53,7 @@ class SupabaseDB {
             throw new Error('Supabase is not initialized with the correct credentials or the Supabase URL and key are not defined');
         }
         else {
-            console.log(safe_1.default.blue('Supabase has been initialized successfully'));
+            console.log(safe_1.default.bgGreen('Supabase has been initialized successfully'));
         }
     }
     /*
@@ -110,7 +110,7 @@ class SupabaseDB {
             }
         });
     }
-    // PUT /spaces/:id
+    // PATCH /spaces/:id
     updateSpace(id, name, description, capacity) {
         return __awaiter(this, void 0, void 0, function* () {
             const { data: space, error } = yield this.supabase
@@ -173,11 +173,11 @@ class SupabaseDB {
         });
     }
     // POST /animals/create
-    createAnimal(name, species, age, space_id) {
+    createAnimal(name, species, age, space_id, treatments) {
         return __awaiter(this, void 0, void 0, function* () {
             const { data: animal, error } = yield this.supabase
                 .from("animals")
-                .insert([{ name, species, age, space_id }]);
+                .insert([{ name, species, age, space_id, treatments }]);
             if (error) {
                 console.error(error);
             }
@@ -258,14 +258,14 @@ class SupabaseDB {
                 if (error) {
                     console.error(error);
                 }
-                return employee;
+                return Promise.resolve(employee);
             }
             catch (error) {
                 console.error(error);
             }
         });
     }
-    // PUT /employees/:id
+    // PATCH /employees/:id
     updateEmployee(id, name, role, availabilities) {
         return __awaiter(this, void 0, void 0, function* () {
             const { data: employee, error } = yield this.supabase

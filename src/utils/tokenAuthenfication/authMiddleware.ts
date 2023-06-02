@@ -31,21 +31,25 @@ class AuthMiddleware {
 
     if (!apiKey) {
       res.status(401).json({
+        error: 401,
         message: 'API key is missing',
       });
     } else {
       const { data: apiKeyData, error } = await supabaseDB.supabase
         .from('employees')
-        .select('*')
-        .eq('api_key', apiKey);
+        .select('api_key')
+        .eq('api_key', apiKey)
+        .single();
 
       if (error) {
         res.status(500).json({
+          error: 500,
           message: 'Internal server error',
         });
       } else if (apiKeyData.length === 0) {
         res.status(401).json({
-          message: 'API key cannot be found',
+          error: 401,
+          message: 'API key cannot be found or is invalid',
         });
       } else {
         return next();
@@ -60,7 +64,6 @@ class AuthMiddleware {
         .select('api_key')
         .eq('name', name)
         .single();
-  
       if (error) {
         console.error(error);
         return Promise.reject(error);
