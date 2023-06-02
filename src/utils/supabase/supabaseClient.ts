@@ -71,10 +71,10 @@ class SupabaseDB {
     }
 
     // POST /spaces
-    async createSpace(name: string, description: string, capacity: string) {
+    async createSpace(name: string, description: string, capacity: string, images: string[], type: string, duration: string, openingHours: string[], closingHours: string[], disabledAccess: boolean, upcomingMaintenanceDate: string[]) {
         const { data: space, error } = await this.supabase
         .from("spaces")
-        .insert([{ name, description, capacity }]);
+        .insert([{ name, description, capacity, images, type, duration, openingHours, closingHours, disabledAccess, upcomingMaintenanceDate }]);
 
         if (error) {
             console.error(error);

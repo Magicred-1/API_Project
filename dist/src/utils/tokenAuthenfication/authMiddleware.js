@@ -82,6 +82,29 @@ class AuthMiddleware {
             }
         });
     }
+    isAdmin(req, res, next) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const apiKey = req.headers['x-api-key'];
+                const { data: employees, error } = yield supabaseClient_1.default.supabase
+                    .from('employees')
+                    .select('role')
+                    .eq('api_key', apiKey)
+                    .single();
+                if (error) {
+                    console.error(error);
+                    return Promise.reject(error);
+                }
+                else {
+                    return Promise.resolve(employees.role === 'Admin');
+                }
+            }
+            catch (error) {
+                console.error(error);
+                return Promise.reject(error);
+            }
+        });
+    }
 }
 exports.default = new AuthMiddleware();
 //# sourceMappingURL=authMiddleware.js.map

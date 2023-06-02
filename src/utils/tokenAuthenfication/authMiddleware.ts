@@ -75,6 +75,31 @@ class AuthMiddleware {
       return Promise.reject(error);
     }
   }
+
+  public async isAdmin( 
+      req: Request,
+      res: Response,
+      next: NextFunction
+    ): Promise<boolean> {
+    try {
+      const apiKey: string | undefined = req.headers['x-api-key'] as string;
+
+      const { data: employees, error } = await supabaseDB.supabase
+        .from('employees')
+        .select('role')
+        .eq('api_key', apiKey)
+        .single();
+      if (error) {
+        console.error(error);
+        return Promise.reject(error);
+      } else {
+        return Promise.resolve(employees.role === 'Admin');
+      }
+    } catch (error) {
+      console.error(error);
+      return Promise.reject(error);
+    }
+  }
 }
 
 export default new AuthMiddleware();
