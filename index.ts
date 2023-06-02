@@ -148,8 +148,8 @@ app.post('/employees/create', AuthMiddleware.checkAPIKey, async (req, res) => {
     }
 });
 
-// POST /employees/delete/:id + API Key
-app.post('/employees/delete/:id', AuthMiddleware.checkAPIKey, async (req, res) => {
+// DELETE /employees/delete/:id + API Key
+app.delete('/employees/delete/:id', AuthMiddleware.checkAPIKey, async (req, res) => {
     try {
         const employeeID = parseInt(req.params.id);
         const employee = await supabaseDB.fetchEmployeeById(employeeID);
@@ -230,8 +230,8 @@ app.post('/animals/create', AuthMiddleware.checkAPIKey, async (req, res) => {
     }
 });
 
-// POST /animals/delete/:id + API Key
-app.post('/animals/delete/:id', AuthMiddleware.checkAPIKey, async (req, res) => {
+// DELETE /animals/delete/:id + API Key
+app.delete('/animals/delete/:id', AuthMiddleware.checkAPIKey, async (req, res) => {
     try {
         const animalID = parseInt(req.params.id);
         const animal = await supabaseDB.fetchAnimalById(animalID);
