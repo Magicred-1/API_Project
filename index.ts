@@ -266,4 +266,20 @@ app.put('/animals/update/:id', AuthMiddleware.checkAPIKey, async (req, res) => {
     }
 });
 
+// Tickets
+// GET /tickets + API Key return a list of tickets
+app.get('/tickets', AuthMiddleware.checkAPIKey, async (req, res) => {
+    try {
+        const tickets = await supabaseDB.fetchTickets();
+
+        if (tickets.length > 0) {
+            res.send(tickets);
+        } else {
+            res.status(404).send('No tickets found');
+        }
+    } catch (error) {
+        res.status(500).send('An error occurred while fetching tickets');
+    }
+}
+
 

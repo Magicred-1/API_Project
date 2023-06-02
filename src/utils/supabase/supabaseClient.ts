@@ -287,19 +287,6 @@ class SupabaseDB {
             return employeeAvailability;
         }
     }
-    // TODO: Add availabilities to employee
-    // // POST /employees/availabilities
-    // async addEmployeeAvailability(employee_id: number, day: string, start_time: string, end_time: string) {
-    //     const { data: employeeAvailability, error } = await this.supabase
-    //     .from("employees_availabilities")
-    //     .insert([{ employee_id, day, start_time, end_time }]);
-
-    //     if (error) {
-    //         console.error(error);
-    //     } else {
-    //         console.log(employeeAvailability);
-    //     }
-    // }
 
     // PUT /employees/availabilities/:id // TODO: Fix
     async updateEmployeeAvailability(employee_id: number, day: string, start_time: string, end_time: string) {
@@ -356,7 +343,115 @@ class SupabaseDB {
         }
         return vet.role ? vet.role === "vet" || vet.role === "Vet" : false;
     }
-}
 
+// Tickets
+// GET /tickets
+    async fetchTickets() {
+        const { data: tickets, error } = await this.supabase
+        .from("tickets")
+        .select("*");
+        
+        if (error) {
+            console.error(error);
+        }
+        return tickets;
+    }
+
+// GET /tickets/:id
+    async fetchTicketById(id: number) {
+        const { data: ticket, error } = await this.supabase
+        .from("tickets")
+        .select("*")
+        .eq('id', id)
+        .single();
+
+        if (error) {
+            console.error(error);
+        }
+        return ticket;
+    }
+
+// POST /tickets
+    async createTicket(type: string, price: number, isValid: boolean) {
+        let valid = false;
+
+        if (isValid) {
+            valid = true;
+        }
+
+        const { data: ticket, error } = await this.supabase
+        .from("tickets")
+        .insert([{ type, price, valid }])
+        .single();
+
+        if (error) {
+            console.error(error);
+        }
+        return ticket;
+    }
+
+
+
+// PUT /tickets/:id
+    async updateTicket(id: number, type?: string, price?: number, isValid?: boolean) {
+        let valid = false;
+
+        if (isValid) {
+            valid = true;
+        }
+
+        const { data: ticket, error } = await this.supabase
+        .from("tickets")
+        .update({ type, price, valid })
+        .eq('id', id)
+        .single();
+
+        if (error) {
+            console.error(error);
+        }
+        return ticket;
+    }
+
+// DELETE /tickets/:id
+    async deleteTicket(id: number) {
+        const { data: ticket, error } = await this.supabase
+        .from("tickets")
+        .delete()
+        .eq('id', id)
+        .single();
+
+        if (error) {
+            console.error(error);
+        }
+        return ticket;
+    }
+
+// Zoo
+// GET /zoo
+    async fetchZoo() {
+        const { data: zoo, error } = await this.supabase
+        .from("zoo")
+        .select("*");
+
+        if (error) {
+            console.error(error);
+        }
+        return zoo;
+    }
+
+    // GET /zoo/stats/spaces/:id
+    async fetchZooSpaceStatsById(id: number) {
+        const { data: zooSpaceStats, error } = await this.supabase
+        .from("zoo")
+        .select("spaces")
+        .eq('id', id)
+        .single();
+
+        if (error) {
+            console.error(error);
+        }
+        return zooSpaceStats;
+    }
+}
 const supabaseDB = new SupabaseDB();
 export default supabaseDB;
