@@ -47,15 +47,58 @@ app.get('/spaces/:id', authMiddleware_1.default.checkAPIKey, (req, res) => __awa
         res.status(500).send('An error occurred while fetching space');
     }
 }));
-// POST /spaces/create?name=SpaceName&description=SpaceDescription&capacity=SpaceCapacity + API Key
+// POST /spaces/create?name=SpaceName&description=SpaceDescription&capacity=SpaceCapacity&images={..}&type=Type&capacity=20&duration=2 hours + API Key
 app.post('/spaces/create/', authMiddleware_1.default.checkAPIKey, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const { name, description, capacity } = req.params;
-        yield supabaseClient_1.default.createSpace(name, description, capacity);
+        const { name, description, capacity, images, type, duration, openingHours, closingHours, disabledAccess, upcomingMaintenanceDate } = req.query;
+        let isDisabledAccess = false;
+        if (disabledAccess === 'true') {
+            isDisabledAccess = true;
+        }
+        yield supabaseClient_1.default.createSpace(name, description, capacity, images, type, duration, openingHours, closingHours, isDisabledAccess, upcomingMaintenanceDate);
         res.send(`Space ${name} created successfully`);
     }
     catch (error) {
         res.status(500).send('An error occurred while creating space');
+    }
+}));
+// PUT /spaces/update/:id?name=SpaceName&description=SpaceDescription&capacity=SpaceCapacity&images={..}&type=Type&capacity=20&duration=2 hours + API Key
+app.put('/spaces/update/:id', authMiddleware_1.default.checkAPIKey, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const spaceID = parseInt(req.params.id);
+        const space = yield supabaseClient_1.default.fetchSpaceById(spaceID);
+        if (space.length > 0) {
+            const { name, description, capacity, images, type, duration, openingHours, closingHours, disabledAccess, upcomingMaintenanceDate } = req.query;
+            let isDisabledAccess = false;
+            if (disabledAccess === 'true') {
+                isDisabledAccess = true;
+            }
+            yield supabaseClient_1.default.updateSpace(spaceID, name, description, capacity, images, type, duration, openingHours, closingHours, isDisabledAccess, upcomingMaintenanceDate);
+            res.send(`Space ${name} updated successfully`);
+        }
+        else {
+            res.status(404).send('No space found');
+        }
+    }
+    catch (error) {
+        res.status(500).send('An error occurred while updating space');
+    }
+}));
+// DELETE /spaces/delete/:id + API Key
+app.delete('/spaces/delete/:id', authMiddleware_1.default.checkAPIKey, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const spaceID = parseInt(req.params.id);
+        const space = yield supabaseClient_1.default.fetchSpaceById(spaceID);
+        if (space.length > 0) {
+            yield supabaseClient_1.default.deleteSpace(spaceID);
+            res.send(`Space ${spaceID} deleted successfully`);
+        }
+        else {
+            res.status(404).send('No space found');
+        }
+    }
+    catch (error) {
+        res.status(500).send('An error occurred while deleting space');
     }
 }));
 // Employees

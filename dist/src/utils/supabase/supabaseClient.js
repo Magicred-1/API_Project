@@ -97,11 +97,11 @@ class SupabaseDB {
         });
     }
     // POST /spaces
-    createSpace(name, description, capacity) {
+    createSpace(name, description, capacity, images, type, duration, openingHours, closingHours, disabledAccess, upcomingMaintenanceDate) {
         return __awaiter(this, void 0, void 0, function* () {
             const { data: space, error } = yield this.supabase
                 .from("spaces")
-                .insert([{ name, description, capacity }]);
+                .insert([{ name, description, capacity, images, type, duration, openingHours, closingHours, disabledAccess, upcomingMaintenanceDate }]);
             if (error) {
                 console.error(error);
             }
@@ -110,12 +110,12 @@ class SupabaseDB {
             }
         });
     }
-    // PATCH /spaces/:id
-    updateSpace(id, name, description, capacity) {
+    // PUT /spaces/:id
+    updateSpace(id, name, description, capacity, images, type, duration, openingHours, closingHours, disabledAccess, upcomingMaintenanceDate) {
         return __awaiter(this, void 0, void 0, function* () {
             const { data: space, error } = yield this.supabase
                 .from("spaces")
-                .update({ name, description, capacity })
+                .update([{ name, description, capacity, images, type, duration, openingHours, closingHours, disabledAccess, upcomingMaintenanceDate }])
                 .eq('id', id);
             if (error) {
                 console.error(error);

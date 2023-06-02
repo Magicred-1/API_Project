@@ -83,11 +83,11 @@ class SupabaseDB {
         }
     }
 
-    // PATCH /spaces/:id
-    async updateSpace(id: number, name: string, description: string, capacity: number) {
+    // PUT /spaces/:id
+    async updateSpace(id: number, name: string, description: string, capacity: string, images: string[], type: string, duration: string, openingHours: string[], closingHours: string[], disabledAccess: boolean, upcomingMaintenanceDate: string[]) {
         const { data: space, error } = await this.supabase
         .from("spaces")
-        .update({ name, description, capacity })
+        .update([{ name, description, capacity, images, type, duration, openingHours, closingHours, disabledAccess, upcomingMaintenanceDate }])
         .eq('id', id);
 
         if (error) {
