@@ -2,13 +2,16 @@ import express from 'express';
 import supabaseDB from './src/utils/supabase/supabaseClient';
 import AuthMiddleware from './src/utils/tokenAuthenfication/authMiddleware';
 // import { Employee, Space, Ticket, Zoo, Animal } from './src/classes';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const app = express();
 
 app.use(express.json());
 
-app.listen(3000, () => {
-    console.log('Server is running on port 3000');
+app.listen(process.env.PORT, () => {
+    console.log('Server is running on port ' + process.env.PORT);
 });
 
 app.get('/', AuthMiddleware.checkAPIKey, (req: express.Request, res: express.Response) => {
@@ -38,12 +41,12 @@ app.get('/spaces/:id', AuthMiddleware.checkAPIKey, async (req: express.Request, 
     }
 });
 
-// POST /spaces/create?name=SpaceName&description=SpaceDescription&capacity=SpaceCapacity + API Key
+// POST /spaces/create?name=SpaceName&description=SpaceDescription&capacity=SpaceCapacity&images={..}&type=Type&capacity=20&duration=2 hours + API Key
 app.post('/spaces/create/', AuthMiddleware.checkAPIKey, async (req: express.Request, res: express.Response) => {
     try {
-        const { name, description, capacity } = req.params;
+        const { name, description, capacity, images, type, duration } = req.query;
 
-        await supabaseDB.createSpace(name, description, capacity);
+        await supabaseDB.createSpace(name as string, description as string, capacity as string, images as string[], type as string, duration as string, openingHours as string[], closingHours as string[], disabledAccess as boolean, upcomingMaintenanceDate as string[]);
 
         res.send(`Space ${name} created successfully`);
     } catch (error) {
