@@ -240,18 +240,18 @@ app.put('/employees/update/:id', (req, res) => __awaiter(void 0, void 0, void 0,
 //         res.status(500).send('An error occurred while fetching animals');
 //     }
 // });
-// // GET /animals/:id + API Key return a animal object with the id
+// // GET /animals/:id + API Key return a animals object with the id
 // app.get('/animals/:id', async (req, res) => {
 //     try {
 //         const animalID = parseInt(req.params.id);
-//         const animal = await supabaseDB.fetchAnimalById(animalID);
-//         if (animal.length > 0) {
-//             res.send(animal);
+//         const animals = await supabaseDB.fetchAnimalById(animalID);
+//         if (animals.length > 0) {
+//             res.send(animals);
 //         } else {
-//             res.status(404).send('No animal found');
+//             res.status(404).send('No animals found');
 //         }
 //     } catch (error) {
-//         res.status(500).send('An error occurred while fetching the animal');
+//         res.status(500).send('An error occurred while fetching the animals');
 //     }
 // });
 // // POST /animals/create?name=John&species=Cat&age=2&space_id=1 + API Key
@@ -261,38 +261,38 @@ app.put('/employees/update/:id', (req, res) => __awaiter(void 0, void 0, void 0,
 //         await supabaseDB.createAnimal(name as string, species as string, parseInt(age as string), parseInt(space_id as string), treatments as string[]);
 //         res.send(`Animal ${name} created successfully`);
 //     } catch (error) {
-//         res.status(500).send('An error occurred while creating animal');
+//         res.status(500).send('An error occurred while creating animals');
 //     }
 // });
 // // DELETE /animals/delete/:id + API Key
 // app.delete('/animals/delete/:id', async (req, res) => {
 //     try {
 //         const animalID = parseInt(req.params.id);
-//         const animal = await supabaseDB.fetchAnimalById(animalID);
-//         if (animal.length > 0) {
+//         const animals = await supabaseDB.fetchAnimalById(animalID);
+//         if (animals.length > 0) {
 //             await supabaseDB.deleteAnimal(animalID);
-//             res.send(`Animal ${animal[0].name} deleted successfully`);
+//             res.send(`Animal ${animals[0].name} deleted successfully`);
 //         } else {
-//             res.status(404).send('No animal found');
+//             res.status(404).send('No animals found');
 //         }
 //     } catch (error) {
-//         res.status(500).send('An error occurred while deleting animal');
+//         res.status(500).send('An error occurred while deleting animals');
 //     }
 // });
 // // PUT /animals/update/:id?name=John&species=Cat&age=2&space_id=1 + API Key
 // app.put('/animals/update/:id', async (req, res) => {
 //     try {
 //         const animalID = parseInt(req.params.id);
-//         const animal = await supabaseDB.fetchAnimalById(animalID);
-//         if (animal.length > 0) {
+//         const animals = await supabaseDB.fetchAnimalById(animalID);
+//         if (animals.length > 0) {
 //             const { name, species, age, space_id } = req.query;
 //             await supabaseDB.updateAnimal(animalID, name as string, species as string, parseInt(age as string), parseInt(space_id as string));
 //             res.send(`Animal ${name} updated successfully`);
 //         } else {
-//             res.status(404).send('The animal does not exist please create it first');
+//             res.status(404).send('The animals does not exist please create it first');
 //         }
 //     } catch (error) {
-//         res.status(500).send('An error occurred while updating animal');
+//         res.status(500).send('An error occurred while updating animals');
 //     }
 // });
 // // Tickets

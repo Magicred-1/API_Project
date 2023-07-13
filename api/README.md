@@ -1,4 +1,4 @@
-# API PROJECT (Planode Zoo) - README
+# API PROJECT (Planode Index) - README
 
 ## Description
 This project is a simple API that allows you to create, read, update and delete users and their posts. It is a REST API that uses the HTTP protocol to communicate with the client. The API is built with Node.js and Express.js. The data is stored in a Supabase database.
