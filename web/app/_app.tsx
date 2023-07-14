@@ -1,7 +1,7 @@
-// /Users/tino/WebstormProjects/API_Project/web/app/_app.tsx
-import '../public/css/CreateEmployee.css';
-import { AppProps } from 'next/app';
+// pages/_app.js
+import '../styles/CreateEmployee.css'
+import { Component, Fragment } from 'react'
 
-export default function MyApp({ Component, pageProps }: AppProps) {
-    return <Component {...pageProps} />;
+export default function MyApp({ Component, pageProps }) {
+    return <Component {...pageProps} />
 }

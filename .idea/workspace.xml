@@ -2,18 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6439e320-0e8e-4c84-a6ef-b39c9a535b6b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/web/app/_app.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/app/public/css/CreateEmployee.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/app/src/utils/supabase/supabaseClient.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/app/src/utils/tokenAuthenfication/authMiddleware.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/api/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/dist/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/api/dist/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/dist/src/classes/animal/animal.class.js" beforeDir="false" afterPath="$PROJECT_DIR$/api/dist/src/classes/animal/animal.class.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/api/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/app/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/web/app/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/app/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/web/app/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/app/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/web/app/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/app/src/pages/about.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/app/src/pages/about.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/app/_app.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/app/_app.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/app/public/css/CreateEmployee.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/app/public/css/CreateEmployee.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/app/src/pages/employees/create.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/app/src/pages/employees/create.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -69,6 +60,7 @@
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/web/app/public/css" />
+      <recent name="$PROJECT_DIR$/web/app/styles" />
       <recent name="$PROJECT_DIR$/web/app" />
       <recent name="$PROJECT_DIR$/web/app/src" />
       <recent name="$PROJECT_DIR$/api" />
@@ -147,7 +139,7 @@
       <workItem from="1688042175211" duration="1144000" />
       <workItem from="1688112619574" duration="1621000" />
       <workItem from="1689092883813" duration="4994000" />
-      <workItem from="1689238239574" duration="11289000" />
+      <workItem from="1689238239574" duration="13435000" />
     </task>
     <servers />
   </component>
