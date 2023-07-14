@@ -99,4 +99,4 @@ class Animal {
     }
 }
 exports.Animal = Animal;
-//# sourceMappingURL=animals.class.js.map
+//# sourceMappingURL=animal.class.js.map

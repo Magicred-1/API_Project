@@ -2,10 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6439e320-0e8e-4c84-a6ef-b39c9a535b6b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/web/app/public/css/UpdateEmployee.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/app/src/pages/_document.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/app/src/pages/employees/update/[id].tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/dist/index.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/api/dist/index.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/dist/src/classes/animal/animal.class.js" beforeDir="false" afterPath="$PROJECT_DIR$/api/dist/src/classes/animal/animal.class.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/app/_app.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/app/_app.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/app/public/css/CreateEmployee.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/app/public/css/CreateEmployee.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/app/src/pages/employees/create.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/app/src/pages/employees/create.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/app/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/web/app/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/app/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/web/app/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/app/src/pages/employees.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/app/src/pages/employees.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/app/src/pages/employees/[id].tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/app/src/pages/employees/[id].tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/app/src/pages/employees/availabilities/[id].tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/app/public/css/EmployeeProfile.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/app/src/pages/employees/availabilities/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/app/public/css/ListEmployees.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/app/src/utils/supabase/supabaseClient.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/app/src/utils/supabase/supabaseClient.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,31 +52,32 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/Users/tino/WebstormProjects/API_Project/web/app",
+    "last_opened_file_path": "/Users/tino/WebstormProjects/API_Project/web/app/src/pages/employees",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "ts.external.directory.path": "/Users/tino/WebstormProjects/API_Project/web/app/node_modules/typescript/lib",
+    "ts.external.directory.path": "/Users/tino/WebstormProjects/API_Project/api/node_modules/typescript/lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/web/app/src/pages/employees" />
       <recent name="$PROJECT_DIR$/web/app" />
       <recent name="$PROJECT_DIR$/web/app/src" />
       <recent name="$PROJECT_DIR$/web" />
       <recent name="$PROJECT_DIR$/web/app/src/pages/tickets" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/web/app/src/pages/employees/update" />
+      <recent name="$PROJECT_DIR$/web/app/src/pages" />
       <recent name="$PROJECT_DIR$/web/app/public/css" />
       <recent name="$PROJECT_DIR$/web/app/styles" />
       <recent name="$PROJECT_DIR$/web/app" />
-      <recent name="$PROJECT_DIR$/web/app/src" />
-      <recent name="$PROJECT_DIR$/api" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.start">
+  <component name="RunManager" selected="npm.buildandrun (1)">
     <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/api/package.json" />
       <command value="run" />
@@ -139,7 +150,9 @@
       <workItem from="1688042175211" duration="1144000" />
       <workItem from="1688112619574" duration="1621000" />
       <workItem from="1689092883813" duration="4994000" />
-      <workItem from="1689238239574" duration="13435000" />
+      <workItem from="1689238239574" duration="22692000" />
+      <workItem from="1689356884902" duration="384000" />
+      <workItem from="1689357295827" duration="467000" />
     </task>
     <servers />
   </component>
