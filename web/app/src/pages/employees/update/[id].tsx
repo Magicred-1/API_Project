@@ -49,6 +49,9 @@ export default function UpdateEmployee() {
     return (
         <div className="form-container">
             <h1 className="form-title">Update Employée</h1>
+            <button className="back-button" onClick={() => router.push('/employees')}>
+                <i className="fas fa-chevron-left"></i>
+            </button>
             <Head>
                 <link rel="stylesheet" href="/css/UpdateEmployee.css" />
             </Head>

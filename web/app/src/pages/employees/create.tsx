@@ -23,7 +23,7 @@ export default function CreateEmployee() {
             console.log(data);
             setSuccess(true);
             setTimeout(() => {
-                router.push('/');
+                router.push('/employees');
             }, 2000);
         }
     }

@@ -2,12 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6439e320-0e8e-4c84-a6ef-b39c9a535b6b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/web/app/public/css/CreateSpace.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/app/public/css/EspaceProfile.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/app/public/css/ListSpaces.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/app/public/css/EmployeeProfile.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/app/public/css/EmployeeProfile.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/app/public/css/ListEmployees.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/app/public/css/ListEmployees.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/app/src/pages/_document.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/app/src/pages/_document.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/app/src/pages/employees.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/app/src/pages/employees.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/app/src/pages/employees/[id].tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/app/src/pages/employees/[id].tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/app/public/css/UpdateEmployee.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/app/public/css/UpdateEmployee.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/app/src/pages/employees/create.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/app/src/pages/employees/create.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/app/src/pages/employees/update/[id].tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/app/src/pages/employees/update/[id].tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/app/src/pages/spaces.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/app/src/pages/spaces.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/app/src/pages/spaces/[id].tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/app/src/pages/spaces/[id].tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/app/src/pages/spaces/create.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/app/src/pages/spaces/create.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/app/src/utils/supabase/supabaseClient.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/app/src/utils/supabase/supabaseClient.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -38,29 +42,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/tino/WebstormProjects/API_Project/web/app/src/pages/employees&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/Users/tino/WebstormProjects/API_Project/api/node_modules/typescript/lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/Users/tino/WebstormProjects/API_Project/web/app/public/css",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "ts.external.directory.path": "/Users/tino/WebstormProjects/API_Project/api/node_modules/typescript/lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/web/app/public/css" />
       <recent name="$PROJECT_DIR$/web/app/src/pages/employees" />
       <recent name="$PROJECT_DIR$/web/app" />
       <recent name="$PROJECT_DIR$/web/app/src" />
       <recent name="$PROJECT_DIR$/web" />
-      <recent name="$PROJECT_DIR$/web/app/src/pages/tickets" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/web/app/src/pages/employees/update" />
@@ -146,7 +150,7 @@
       <workItem from="1689238239574" duration="22692000" />
       <workItem from="1689356884902" duration="384000" />
       <workItem from="1689357295827" duration="1385000" />
-      <workItem from="1689404952885" duration="739000" />
+      <workItem from="1689404952885" duration="6943000" />
     </task>
     <servers />
   </component>
