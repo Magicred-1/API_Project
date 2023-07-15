@@ -37,6 +37,10 @@ export default function EmployeeProfile() {
                         <p>Disponibilités: {employee.availabilities.join(', ')}</p>
                     </>
                 )}
+                <button className="back-button" onClick={() => router.push('/employees')}>
+                    <i className="fas fa-arrow-left"></i> Retour à la liste des employés
+                </button>
+
             </div>
         </>
     );

@@ -59,7 +59,7 @@ export default function UpdateEmployee() {
                 <input type="text" value={employee?.role || ''} onChange={e => setEmployee({...employee, role: e.target.value})} />
                 <input type="text" value={employee?.availabilities || ''} onChange={e => setEmployee({...employee, availabilities: [e.target.value]})} />
 
-                <button type="submit">Update</button>
+                <button className="submit-button" type="submit">Update</button>
             </form>
         </div>
     );

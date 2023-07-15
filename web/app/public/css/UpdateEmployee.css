@@ -44,3 +44,19 @@ input[type="submit"] {
     color: green;
     text-align: center;
 }
+
+.submit-button {
+    margin-top: 50px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #3498db;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+    background-color: #2980b9;
+}

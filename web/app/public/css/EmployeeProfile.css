@@ -15,3 +15,24 @@ body {
 h1, h2, p {
     text-align: center;
 }
+
+
+.back-button {
+    margin-top: 50px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #3498db;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+    background-color: #2980b9;
+}
+
+.back-button i {
+    margin-right: 5px;
+}

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import supabaseDB from '../utils/supabase/supabaseClient';
 import Head from 'next/head';
+import router from 'next/router';
 
 // Crée le composant Employés
 export default function Employees(message?: any) {
@@ -64,6 +65,9 @@ export default function Employees(message?: any) {
         window.location.href = `/employees/update/${id}`;
     }
 
+    function viewEmployee(id) {
+        router.push(`/employees/${id}`);
+    }
 
 // Rend le composant
     return (
@@ -97,6 +101,9 @@ export default function Employees(message?: any) {
                                 </button>
                                 <button className="delete-button" onClick={() => deleteEmployee(employee.id)}>
                                     <i className="fas fa-trash-alt"></i>
+                                </button>
+                                <button className="view-button" onClick={() => viewEmployee(employee.id)}>
+                                    <i className="fas fa-eye"></i>
                                 </button>
                             </td>
                         </tr>
