@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6439e320-0e8e-4c84-a6ef-b39c9a535b6b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/app/public/css/CreateAnimals.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/app/public/css/CreateAnimals.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/app/src/pages/animals/create.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/app/src/pages/animals/create.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/app/public/css/UpdateAnimals.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/app/src/pages/animals/update/[id].tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/app/src/pages/animals/update/[id].tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/app/src/utils/supabase/supabaseClient.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/app/src/utils/supabase/supabaseClient.ts" afterDir="false" />
     </list>
@@ -43,7 +41,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/Users/tino/WebstormProjects/API_Project/web/app/src/pages/animals",
+    "last_opened_file_path": "/Users/tino/WebstormProjects/API_Project/web/app/public/css",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -54,9 +52,9 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/web/app/public/css" />
       <recent name="$PROJECT_DIR$/web/app/src/pages/animals" />
       <recent name="$PROJECT_DIR$/web/app/src/pages/spaces" />
-      <recent name="$PROJECT_DIR$/web/app/public/css" />
       <recent name="$PROJECT_DIR$/web/app/src/pages/employees" />
       <recent name="$PROJECT_DIR$/web/app" />
     </key>
@@ -146,7 +144,7 @@
       <workItem from="1689357295827" duration="1385000" />
       <workItem from="1689404952885" duration="7538000" />
       <workItem from="1689581177439" duration="20000" />
-      <workItem from="1689587960247" duration="11894000" />
+      <workItem from="1689587960247" duration="12209000" />
     </task>
     <servers />
   </component>

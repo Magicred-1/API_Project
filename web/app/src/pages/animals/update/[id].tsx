@@ -7,8 +7,23 @@ export default function UpdateAnimal() {
     const router = useRouter();
     const { id } = router.query;
     const [successMessage, setSuccessMessage] = useState("");
+    const [spaces, setSpaces] = useState([]);
 
     const [animal, setAnimal] = useState(null);
+
+
+    useEffect(() => {
+        async function loadSpaces() {
+            const { data: spacesFromDB, error } = await supabaseDB.supabase
+                .from('spaces')
+                .select('*');
+
+            if (error) console.error('Error loading spaces', error);
+            else setSpaces(spacesFromDB);
+        }
+
+        loadSpaces();
+    }, []);
 
     useEffect(() => {
         async function loadAnimal() {
@@ -55,16 +70,37 @@ export default function UpdateAnimal() {
                 <i className="fas fa-chevron-left"></i>
             </button>
             <Head>
-                <link rel="stylesheet" href="/css/UpdateAnimal.css" />
+                <link rel="stylesheet" href="/css/UpdateAnimals.css" />
             </Head>
 
             <form onSubmit={handleUpdate}>
                 {successMessage && <p className="success-message">{successMessage}</p>}
-                <input type="text" value={animal?.name || ''} onChange={e => setAnimal({...animal, name: e.target.value})} />
-                <input type="text" value={animal?.species || ''} onChange={e => setAnimal({...animal, species: e.target.value})} />
-                <input type="text" value={animal?.space_id || ''} onChange={e => setAnimal({...animal, space_id: e.target.value})} />
-                <input type="text" value={animal?.treatments || ''} onChange={e => setAnimal({...animal, treatments: e.target.value})} />
-                <input type="text" value={animal?.age || ''} onChange={e => setAnimal({...animal, age: e.target.value})} />
+                <label>
+                    Name:
+                    <input type="text" value={animal?.name || ''} onChange={e => setAnimal({...animal, name: e.target.value})} />
+                </label>
+                <label>
+                    Species:
+                    <input type="text" value={animal?.species || ''} onChange={e => setAnimal({...animal, species: e.target.value})} />
+                </label>
+                <label>
+                    Space:
+                    <select value={animal?.space_id || ''} onChange={e => setAnimal({...animal, space_id: e.target.value})}>
+                        {spaces.map((space) => (
+                            <option key={space.id} value={space.id}>
+                                {space.name}
+                            </option>
+                        ))}
+                    </select>
+                </label>
+                <label>
+                    Treatments:
+                    <input type="text" value={animal?.treatments || ''} onChange={e => setAnimal({...animal, treatments: e.target.value})} />
+                </label>
+                <label>
+                    Age:
+                    <input type="text" value={animal?.age || ''} onChange={e => setAnimal({...animal, age: e.target.value})} />
+                </label>
 
                 <button className="submit-button" type="submit">Update</button>
             </form>
