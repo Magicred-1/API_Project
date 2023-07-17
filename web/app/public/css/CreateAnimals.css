@@ -23,12 +23,6 @@ body {
     text-align: center;
 }
 
-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-}
 
 label {
     display: flex;
@@ -37,4 +31,16 @@ label {
 
 input[type="submit"] {
     margin-top: 1rem;
+}
+
+/* CSS */
+form label {
+    display: block;
+    margin-bottom: 1em;
+}
+
+form label input,
+form label select {
+    width: 100%;
+    box-sizing: border-box;/
 }

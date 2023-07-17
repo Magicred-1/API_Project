@@ -3,64 +3,68 @@ import supabaseDB from '../../../utils/supabase/supabaseClient';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
 
-export default function UpdateEmployee() {
+export default function UpdateAnimal() {
     const router = useRouter();
     const { id } = router.query;
     const [successMessage, setSuccessMessage] = useState("");
 
-    const [employee, setEmployee] = useState(null);
+    const [animal, setAnimal] = useState(null);
 
     useEffect(() => {
-        async function loadEmployee() {
-            const { data: employees, error } = await supabaseDB.supabase
-                .from('employees')
+        async function loadAnimal() {
+            const { data: animals, error } = await supabaseDB.supabase
+                .from('animals')
                 .select('*')
                 .eq('id', id);
 
-            if (error) console.error('Error loading employee', error);
-            else setEmployee(employees[0]);
+            if (error) console.error('Error loading animal', error);
+            else setAnimal(animals[0]);
         }
 
-        if (id) loadEmployee();
+        if (id) loadAnimal();
     }, [id]);
 
     async function handleUpdate(event) {
         event.preventDefault();
         const { data, error } = await supabaseDB.supabase
-            .from('employees')
+            .from('animals')
             .update({
-                name: employee.name,
-                role: employee.role,
-                availabilities: employee.availabilities
+                name: animal.name,
+                species: animal.species,
+                space_id: animal.space_id,
+                treatments: animal.treatments,
+                age: animal.age
             })
             .eq('id', id);
 
         if (error) {
-            console.error('There was an error updating the employee:', error);
+            console.error('There was an error updating the animal:', error);
         } else {
-            console.log('Employee updated successfully:', data);
-            setSuccessMessage("Employee updated successfully !");
+            console.log('Animal updated successfully:', data);
+            setSuccessMessage("Animal updated successfully !");
             setTimeout(() => {
-                router.push('/employees');
+                router.push('/animals');
             }, 2000);
         }
     }
 
     return (
         <div className="form-container">
-            <h1 className="form-title">Update Employée</h1>
-            <button className="back-button" onClick={() => router.push('/employees')}>
+            <h1 className="form-title">Update Animal</h1>
+            <button className="back-button" onClick={() => router.push('/animals')}>
                 <i className="fas fa-chevron-left"></i>
             </button>
             <Head>
-                <link rel="stylesheet" href="/css/UpdateEmployee.css" />
+                <link rel="stylesheet" href="/css/UpdateAnimal.css" />
             </Head>
 
             <form onSubmit={handleUpdate}>
                 {successMessage && <p className="success-message">{successMessage}</p>}
-                <input type="text" value={employee?.name || ''} onChange={e => setEmployee({...employee, name: e.target.value})} />
-                <input type="text" value={employee?.role || ''} onChange={e => setEmployee({...employee, role: e.target.value})} />
-                <input type="text" value={employee?.availabilities || ''} onChange={e => setEmployee({...employee, availabilities: [e.target.value]})} />
+                <input type="text" value={animal?.name || ''} onChange={e => setAnimal({...animal, name: e.target.value})} />
+                <input type="text" value={animal?.species || ''} onChange={e => setAnimal({...animal, species: e.target.value})} />
+                <input type="text" value={animal?.space_id || ''} onChange={e => setAnimal({...animal, space_id: e.target.value})} />
+                <input type="text" value={animal?.treatments || ''} onChange={e => setAnimal({...animal, treatments: e.target.value})} />
+                <input type="text" value={animal?.age || ''} onChange={e => setAnimal({...animal, age: e.target.value})} />
 
                 <button className="submit-button" type="submit">Update</button>
             </form>
