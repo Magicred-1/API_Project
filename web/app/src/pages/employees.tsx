@@ -113,7 +113,7 @@ export default function Employees(message?: any) {
                 </table>
                 <div>
                     <button className="add-button" onClick={() => router.push('/employees/create')}>
-                        <span>Add a Space</span>
+                        <span>Add a employee</span>
                     </button>
                 </div>
             </div>
