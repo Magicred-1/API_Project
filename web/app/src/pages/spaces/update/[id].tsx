@@ -65,27 +65,27 @@ export default function UpdateSpace() {
             <form onSubmit={handleUpdate}>
                 {successMessage && <p className="success-message">{successMessage}</p>}
 
-                <label htmlFor="name">Name:</label>
+                <label htmlFor="name">Name:
                 <input type="text" id="name" value={space?.name || ''} onChange={e => setSpace({...space, name: e.target.value})} />
-
-                <label htmlFor="description">Description:</label>
+                </label>
+                <label htmlFor="description">Description:
                 <input type="text" id="description" value={space?.description || ''} onChange={e => setSpace({...space, description: e.target.value})} />
-
-                <label htmlFor="type">Type:</label>
+                </label>
+                <label htmlFor="type">Type:
                 <input type="text" id="type" value={space?.type || ''} onChange={e => setSpace({...space, type: e.target.value})} />
-
-                <label htmlFor="capacity">Capacity:</label>
+                </label>
+                <label htmlFor="capacity">Capacity:
                 <input type="text" id="capacity" value={space?.capacity || ''} onChange={e => setSpace({...space, capacity: e.target.value})} />
-
-                <label htmlFor="duration">Duration:</label>
+                </label>
+                <label htmlFor="duration">Duration:
                 <input type="text" id="duration" value={space?.duration || ''} onChange={e => setSpace({...space, duration: e.target.value})} />
-
-                <label htmlFor="openingHours">Opening Hours:</label>
+                </label>
+                <label htmlFor="openingHours">Opening Hours:
                 <input type="text" id="openingHours" value={space?.openingHours || ''} onChange={e => setSpace({...space, openingHours: e.target.value.split(',')})} />
-
-                <label htmlFor="closingHours">Closing Hours:</label>
+                </label>
+                <label htmlFor="closingHours">Closing Hours:
                 <input type="text" id="closingHours" value={space?.closingHours || ''} onChange={e => setSpace({...space, closingHours: e.target.value.split(',')})} />
-
+                </label>
                 <label htmlFor="disabledAccess">
                     Accès handicapés:
                     <input type="checkbox" id="disabledAccess" checked={space?.disabledAccess || false} onChange={e => setSpace({...space, disabledAccess: e.target.checked})} />
@@ -96,9 +96,9 @@ export default function UpdateSpace() {
                     <input type="checkbox" id="maintenance" checked={space?.maintenance || false} onChange={e => setSpace({...space, maintenance: e.target.checked})} />
                 </label>
 
-                <label htmlFor="upcomingMaintenanceDate">Upcoming Maintenance Date:</label>
+                <label htmlFor="upcomingMaintenanceDate">Upcoming Maintenance Date:
                 <input type="text" id="upcomingMaintenanceDate" value={space?.upcomingMaintenanceDate || ''} onChange={e => setSpace({...space, upcomingMaintenanceDate: e.target.value.split(',')})} />
-
+                </label>
                 <button className="submit-button" type="submit">Update</button>
             </form>
         </div>
