@@ -2,15 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6439e320-0e8e-4c84-a6ef-b39c9a535b6b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/web/app/public/css/CreateSpace.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/app/public/css/EspaceProfile.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/app/public/css/ListSpaces.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/app/src/pages/spaces/update/[id].tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/app/public/css/UpdateEmployee.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/app/public/css/UpdateEmployee.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/app/src/pages/employees/create.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/app/src/pages/employees/create.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/app/src/pages/employees/update/[id].tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/app/src/pages/employees/update/[id].tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/app/src/pages/spaces.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/app/src/pages/spaces.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/app/src/pages/spaces/[id].tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/app/src/pages/spaces/[id].tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/app/src/pages/spaces/create.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/app/src/pages/spaces/create.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/app/src/utils/supabase/supabaseClient.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/app/src/utils/supabase/supabaseClient.ts" afterDir="false" />
     </list>
@@ -49,7 +42,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/Users/tino/WebstormProjects/API_Project/web/app/public/css",
+    "last_opened_file_path": "/Users/tino/WebstormProjects/API_Project/web/app/src/pages/spaces",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -60,11 +53,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/web/app/src/pages/spaces" />
       <recent name="$PROJECT_DIR$/web/app/public/css" />
       <recent name="$PROJECT_DIR$/web/app/src/pages/employees" />
       <recent name="$PROJECT_DIR$/web/app" />
       <recent name="$PROJECT_DIR$/web/app/src" />
-      <recent name="$PROJECT_DIR$/web" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/web/app/src/pages/employees/update" />
@@ -150,7 +143,9 @@
       <workItem from="1689238239574" duration="22692000" />
       <workItem from="1689356884902" duration="384000" />
       <workItem from="1689357295827" duration="1385000" />
-      <workItem from="1689404952885" duration="6943000" />
+      <workItem from="1689404952885" duration="7538000" />
+      <workItem from="1689581177439" duration="20000" />
+      <workItem from="1689587960247" duration="2457000" />
     </task>
     <servers />
   </component>

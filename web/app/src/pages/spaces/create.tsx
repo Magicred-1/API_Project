@@ -9,11 +9,11 @@ export default function CreateSpace() {
     const [type, setType] = useState('');
     const [capacity, setCapacity] = useState('');
     const [duration, setDuration] = useState('');
-    const [openingHours, setOpeningHours] = useState('');
-    const [closingHours, setClosingHours] = useState('');
+    const [openingHours, setOpeningHours] = useState<string[]>([]);
+    const [closingHours, setClosingHours] = useState<string[]>([]);
     const [disabledAccess, setDisabledAccess] = useState(false);
     const [maintenance, setMaintenance] = useState(false);
-    const [upcomingMaintenanceDate, setUpcomingMaintenanceDate] = useState('');
+    const [upcomingMaintenanceDate, setUpcomingMaintenanceDate] = useState<string[]>([]);
 
     const [success, setSuccess] = useState(false);
     const router = useRouter();
@@ -78,11 +78,11 @@ export default function CreateSpace() {
                     </label>
                     <label>
                         Heures douverture:
-                        <input type="text" value={openingHours} onChange={(e) => setOpeningHours(e.target.value)} />
+                        <input type="text" value={openingHours} onChange={(e) => setOpeningHours(e.target.value.split(','))} />
                     </label>
                     <label>
                         Heures de fermeture:
-                        <input type="text" value={closingHours} onChange={(e) => setClosingHours(e.target.value)} />
+                        <input type="text" value={closingHours} onChange={(e) => setClosingHours(e.target.value.split(','))} />
                     </label>
                     <label>
                         Accès handicapés:
@@ -94,7 +94,7 @@ export default function CreateSpace() {
                     </label>
                     <label>
                         Prochaine date de maintenance:
-                        <input type="text" value={upcomingMaintenanceDate} onChange={(e) => setUpcomingMaintenanceDate(e.target.value)} />
+                        <input type="text" value={upcomingMaintenanceDate} onChange={(e) => setUpcomingMaintenanceDate(e.target.value.split(','))} />
                     </label>
                     <input type="submit" value="Submit" />
                 </form>
