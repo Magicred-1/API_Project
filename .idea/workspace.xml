@@ -2,9 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6439e320-0e8e-4c84-a6ef-b39c9a535b6b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/web/app/src/pages/spaces/update/[id].tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/app/public/css/UpdateSpace.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/app/src/pages/spaces/create.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/app/src/pages/spaces/create.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/app/public/css/ListEmployees.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/app/public/css/ListEmployees.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/app/public/css/ListSpaces.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/app/public/css/ListSpaces.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/app/src/pages/employees.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/app/src/pages/employees.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/app/src/pages/spaces.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/app/src/pages/spaces.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/app/src/pages/spaces/update/[id].tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/app/src/pages/spaces/update/[id].tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/app/src/utils/supabase/supabaseClient.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/app/src/utils/supabase/supabaseClient.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -145,7 +149,7 @@
       <workItem from="1689357295827" duration="1385000" />
       <workItem from="1689404952885" duration="7538000" />
       <workItem from="1689581177439" duration="20000" />
-      <workItem from="1689587960247" duration="2457000" />
+      <workItem from="1689587960247" duration="5506000" />
     </task>
     <servers />
   </component>

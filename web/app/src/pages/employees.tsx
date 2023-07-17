@@ -111,6 +111,11 @@ export default function Employees(message?: any) {
                     ))}
                     </tbody>
                 </table>
+                <div>
+                    <button className="add-button" onClick={() => router.push('/employees/create')}>
+                        <span>Add a Space</span>
+                    </button>
+                </div>
             </div>
         </>
     );

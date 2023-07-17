@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
 import supabaseDB from '../utils/supabase/supabaseClient';
+import {getDefaultResultOrder} from "dns";
 
 const SpacesList = () => {
     const [spaces, setSpaces] = useState([]);
@@ -9,8 +10,10 @@ const SpacesList = () => {
     const [successMessage, setSuccessMessage] = useState('');
     const router = useRouter();
 
-    const fetchSpaces = async () => {
-        try {
+    useEffect(() => {
+        // Défini une fonction asynchrone pour charger les employés
+        async function fetchSpaces() {
+            // Utilise Supabase pour charger les employés
             const { data: spaces, error } = await supabaseDB.supabase
                 .from('spaces')
                 .select(
@@ -25,19 +28,22 @@ const SpacesList = () => {
                     'closingHours,\n' +
                     'disabledAccess,\n' +
                     'maintenance,\n' +
-                    'upcomingMaintenanceDate');
+                    'upcomingMaintenanceDate')
+                .order('id', { ascending: true });
 
+
+            // Si il y a une erreur, affiche-la dans la console
             if (error) {
-                throw error;
+                console.error(error);
+            } else {
+                // Sinon, mets à jour l'état avec les employés chargés
+                setSpaces(spaces);
             }
-
-            setSpaces(spaces);
-        } catch (error) {
-            setErrorMessage(error.message);
         }
-    };
 
-
+        // Appelle la fonction pour charger les employés
+        fetchSpaces();
+    }, []);
 
     const deleteSpace = async (id) => {
         const confirmDelete = window.confirm('Voulez-vous vraiment supprimer cette espace ?');
@@ -51,9 +57,9 @@ const SpacesList = () => {
             .match({ id });
 
         if (error) {
-            alert(`Erreur lors de la suppression de l\'espace : ${error}`);
+            alert(`Erreur lors de la suppression de l'espace : ${error}`);
         } else {
-            setSpaces(spaces.filter(space => space.id !== id));
+            setSpaces(spaces.filter((space) => space.id !== id));
             setSuccessMessage('Employé supprimé avec succès!');
         }
     };
@@ -66,16 +72,6 @@ const SpacesList = () => {
         router.push(`/spaces/${id}`);
     };
 
-    useEffect(() => {
-        fetchSpaces();
-    }, []);
-
-
-    useEffect(() => {
-        fetchSpaces();
-    }, []);
-
-    // Render the component
     return (
         <>
             <Head>
@@ -126,7 +122,6 @@ const SpacesList = () => {
                                     <i className="fas fa-times-circle"></i>
                                 )}
                             </td>
-
                             <td>{space.upcomingMaintenanceDate}</td>
                             <td>
                                 <div className="button-group">
@@ -145,6 +140,11 @@ const SpacesList = () => {
                     ))}
                     </tbody>
                 </table>
+                <div>
+                    <button className="add-button" onClick={() => router.push('/spaces/create')}>
+                        <span>Add a Space</span>
+                    </button>
+                </div>
             </div>
         </>
     );

@@ -3,64 +3,101 @@ import supabaseDB from '../../../utils/supabase/supabaseClient';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
 
-export default function UpdateEmployee() {
+export default function UpdateSpace() {
     const router = useRouter();
     const { id } = router.query;
     const [successMessage, setSuccessMessage] = useState("");
 
-    const [employee, setEmployee] = useState(null);
+    const [space, setSpace] = useState(null);
 
     useEffect(() => {
-        async function loadEmployee() {
-            const { data: employees, error } = await supabaseDB.supabase
-                .from('employees')
+        async function loadSpace() {
+            const { data: spaces, error } = await supabaseDB.supabase
+                .from('spaces')
                 .select('*')
                 .eq('id', id);
 
-            if (error) console.error('Error loading employee', error);
-            else setEmployee(employees[0]);
+            if (error) console.error('Error loading space', error);
+            else setSpace(spaces[0]);
         }
 
-        if (id) loadEmployee();
+        if (id) loadSpace();
     }, [id]);
 
     async function handleUpdate(event) {
         event.preventDefault();
         const { data, error } = await supabaseDB.supabase
-            .from('employees')
+            .from('spaces')
             .update({
-                name: employee.name,
-                role: employee.role,
-                availabilities: employee.availabilities
+                name: space.name,
+                description: space.description,
+                type: space.type,
+                capacity: space.capacity,
+                duration: space.duration,
+                openingHours: space.openingHours,
+                closingHours: space.closingHours,
+                disabledAccess: space.disabledAccess,
+                maintenance: space.maintenance,
+                upcomingMaintenanceDate: space.upcomingMaintenanceDate
             })
             .eq('id', id);
 
         if (error) {
-            console.error('There was an error updating the employee:', error);
+            console.error('There was an error updating the space:', error);
         } else {
-            console.log('Employee updated successfully:', data);
-            setSuccessMessage("Employee updated successfully !");
+            console.log('Space updated successfully:', data);
+            setSuccessMessage("Space updated successfully!");
             setTimeout(() => {
-                router.push('/employees');
+                router.push('/spaces');
             }, 2000);
         }
     }
 
     return (
         <div className="form-container">
-            <h1 className="form-title">Update Employée</h1>
-            <button className="back-button" onClick={() => router.push('/employees')}>
+            <h1 className="form-title">Update Space</h1>
+            <button className="back-button" onClick={() => router.push('/spaces')}>
                 <i className="fas fa-chevron-left"></i>
             </button>
             <Head>
-                <link rel="stylesheet" href="/css/UpdateEmployee.css" />
+                <link rel="stylesheet" href="/css/UpdateSpace.css" />
             </Head>
-
             <form onSubmit={handleUpdate}>
                 {successMessage && <p className="success-message">{successMessage}</p>}
-                <input type="text" value={employee?.name || ''} onChange={e => setEmployee({...employee, name: e.target.value})} />
-                <input type="text" value={employee?.role || ''} onChange={e => setEmployee({...employee, role: e.target.value})} />
-                <input type="text" value={employee?.availabilities || ''} onChange={e => setEmployee({...employee, availabilities: [e.target.value]})} />
+
+                <label htmlFor="name">Name:</label>
+                <input type="text" id="name" value={space?.name || ''} onChange={e => setSpace({...space, name: e.target.value})} />
+
+                <label htmlFor="description">Description:</label>
+                <input type="text" id="description" value={space?.description || ''} onChange={e => setSpace({...space, description: e.target.value})} />
+
+                <label htmlFor="type">Type:</label>
+                <input type="text" id="type" value={space?.type || ''} onChange={e => setSpace({...space, type: e.target.value})} />
+
+                <label htmlFor="capacity">Capacity:</label>
+                <input type="text" id="capacity" value={space?.capacity || ''} onChange={e => setSpace({...space, capacity: e.target.value})} />
+
+                <label htmlFor="duration">Duration:</label>
+                <input type="text" id="duration" value={space?.duration || ''} onChange={e => setSpace({...space, duration: e.target.value})} />
+
+                <label htmlFor="openingHours">Opening Hours:</label>
+                <input type="text" id="openingHours" value={space?.openingHours || ''} onChange={e => setSpace({...space, openingHours: e.target.value.split(',')})} />
+
+                <label htmlFor="closingHours">Closing Hours:</label>
+                <input type="text" id="closingHours" value={space?.closingHours || ''} onChange={e => setSpace({...space, closingHours: e.target.value.split(',')})} />
+
+                <label htmlFor="disabledAccess">
+                    Accès handicapés:
+                    <input type="checkbox" id="disabledAccess" checked={space?.disabledAccess || false} onChange={e => setSpace({...space, disabledAccess: e.target.checked})} />
+                </label>
+
+                <label htmlFor="maintenance">
+                    Maintenance:
+                    <input type="checkbox" id="maintenance" checked={space?.maintenance || false} onChange={e => setSpace({...space, maintenance: e.target.checked})} />
+                </label>
+
+                <label htmlFor="upcomingMaintenanceDate">Upcoming Maintenance Date:</label>
+                <input type="text" id="upcomingMaintenanceDate" value={space?.upcomingMaintenanceDate || ''} onChange={e => setSpace({...space, upcomingMaintenanceDate: e.target.value.split(',')})} />
 
                 <button className="submit-button" type="submit">Update</button>
             </form>

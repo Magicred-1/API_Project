@@ -97,3 +97,26 @@ tr:nth-child(even) {
     display: flex;
     justify-content: space-around;
 }
+
+.add-button {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 13px;
+    padding: 10px 15px;
+    margin-right: 10px;
+    border-radius: 8px;
+    font-family: 'Nunito', sans-serif !important;
+    font-weight: 400;
+    margin-top: 40px;
+}
+
+.add-button:hover {
+    background-color: #45a049; /* Color verde oscuro al pasar el ratón por encima */
+}
+
+
+
+
+
