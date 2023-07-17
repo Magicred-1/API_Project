@@ -2,9 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6439e320-0e8e-4c84-a6ef-b39c9a535b6b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/web/app/public/css/AnimalProfile.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/app/public/css/CreateAnimals.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/app/public/css/ListAnimals.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/app/src/pages/animals/update/[id].tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/app/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/web/app/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/app/src/pages/spaces/update/[id].tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/app/src/pages/spaces/update/[id].tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/app/src/pages/animals.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/app/src/pages/animals.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/app/src/pages/animals/[id].tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/app/src/pages/animals/[id].tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/app/src/pages/animals/create.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/app/src/pages/animals/create.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/app/src/utils/supabase/supabaseClient.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/app/src/utils/supabase/supabaseClient.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -42,7 +47,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/Users/tino/WebstormProjects/API_Project/web/app/src/pages/spaces",
+    "last_opened_file_path": "/Users/tino/WebstormProjects/API_Project/web/app/src/pages/animals",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -53,11 +58,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/web/app/src/pages/animals" />
       <recent name="$PROJECT_DIR$/web/app/src/pages/spaces" />
       <recent name="$PROJECT_DIR$/web/app/public/css" />
       <recent name="$PROJECT_DIR$/web/app/src/pages/employees" />
       <recent name="$PROJECT_DIR$/web/app" />
-      <recent name="$PROJECT_DIR$/web/app/src" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/web/app/src/pages/employees/update" />
@@ -145,7 +150,7 @@
       <workItem from="1689357295827" duration="1385000" />
       <workItem from="1689404952885" duration="7538000" />
       <workItem from="1689581177439" duration="20000" />
-      <workItem from="1689587960247" duration="6115000" />
+      <workItem from="1689587960247" duration="10336000" />
     </task>
     <servers />
   </component>
