@@ -1,5 +1,6 @@
 
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+import { Menu } from '../Layout';
 
 const Index = () => {
     const [zoo, setZoo] = useState(null);
@@ -11,6 +12,7 @@ const Index = () => {
 
     const fetchZoo = async () => {
         // route pour récupérer les données de l'API
+
         const res = await fetch("/api/zoo");
         const data = await res.json();
         setZoo(data);
@@ -19,6 +21,7 @@ const Index = () => {
 
     return (
         <div>
+            <Menu />
             {loading ? (
                 "Loading..."
             ) : (

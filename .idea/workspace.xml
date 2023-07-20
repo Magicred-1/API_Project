@@ -2,14 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6439e320-0e8e-4c84-a6ef-b39c9a535b6b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/web/app/public/css/CreateTickets.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/app/public/css/TicketsList.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/app/public/css/TicketsProfile.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/app/src/pages/tickets/update/[id].tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/app/public/css/menu.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/app/src/Layout.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/app/next.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/app/next.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/app/src/pages/_document.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/app/src/pages/_document.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/app/src/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/app/src/pages/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/app/src/pages/tickets.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/app/src/pages/tickets.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/app/src/pages/tickets/[id].tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/app/src/pages/tickets/[id].tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/app/src/pages/tickets/create.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/app/src/pages/tickets/create.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/app/src/utils/supabase/supabaseClient.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/app/src/utils/supabase/supabaseClient.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -47,7 +46,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/Users/tino/WebstormProjects/API_Project/web/app/src/pages/tickets",
+    "last_opened_file_path": "/Users/tino/WebstormProjects/API_Project/web/app/public/css",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -152,7 +151,7 @@
       <workItem from="1689581177439" duration="20000" />
       <workItem from="1689587960247" duration="14390000" />
       <workItem from="1689631402595" duration="651000" />
-      <workItem from="1689836318568" duration="4903000" />
+      <workItem from="1689836318568" duration="8268000" />
     </task>
     <servers />
   </component>
