@@ -1,0 +1,122 @@
+/* ListEmployees.css */
+body {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 400;
+    background-color: aliceblue;
+}
+
+.list-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    width: 80%;
+    margin: auto;
+}
+
+.success-message {
+    color: green;
+    text-align: center;
+}
+
+
+.table-title {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+table {
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 0.5rem;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+tr:nth-child(even) {
+    background-color: white;
+}
+
+
+
+.delete-button {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 13px;
+    padding: 10px 15px;
+    border-radius: 8px;
+    margin-right: 10px;
+}
+
+.delete-button:hover {
+    background-color: #da190b;
+}
+
+
+.update-button {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 13px;
+    padding: 10px 15px;
+    margin-right: 10px;
+    border-radius: 8px;
+}
+
+.view-button {
+    background-color: #909390;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 13px;
+    padding: 10px 15px;
+    margin-right: 10px;
+    border-radius: 8px;
+}
+
+.view-button:hover {
+    background-color: #45a049;
+}
+
+
+.update-button:hover {
+    background-color: #45a049;
+}
+
+.button-group {
+    display: flex;
+    justify-content: center;
+}
+
+.add-button {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 13px;
+    padding: 10px 15px;
+    margin-right: 10px;
+    border-radius: 8px;
+    font-family: 'Nunito', sans-serif !important;
+    font-weight: 400;
+    margin-top: 40px;
+}
+
+.add-button:hover {
+    background-color: #45a049;
+}
+
+
+
+
+
