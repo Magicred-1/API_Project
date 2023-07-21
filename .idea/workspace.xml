@@ -2,14 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6439e320-0e8e-4c84-a6ef-b39c9a535b6b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/web/app/public/css/menu.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/app/src/Layout.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/app/public/css/LoginPage.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/app/src/pages/api/employees.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/app/src/pages/api/login.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/app/src/pages/login.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/app/src/utils/auth/adminOnly.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/app/src/utils/auth/auth.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/app/src/utils/auth/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/app/next.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/app/next.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/app/src/pages/_document.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/app/src/pages/_document.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/api/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/api/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/app/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/web/app/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/app/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/web/app/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/app/src/pages/employees/create.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/app/src/pages/employees/create.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/app/src/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/app/src/pages/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/app/src/pages/tickets.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/app/src/pages/tickets.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/app/src/utils/supabase/supabaseClient.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/app/src/utils/supabase/supabaseClient.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/app/src/utils/tokenAuthenfication/authMiddleware.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/app/src/utils/tokenAuthenfication/authMiddleware.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,8 +28,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="TypeScript File" />
-        <option value="TypeScript JSX File" />
         <option value="CSS File" />
+        <option value="TypeScript JSX File" />
       </list>
     </option>
   </component>
@@ -30,6 +38,9 @@
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectId" id="2QeZxsXB0N56JMS2R8Vvm85rXot" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -51,24 +62,25 @@
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "ts.external.directory.path": "/Users/tino/WebstormProjects/API_Project/api/node_modules/typescript/lib",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "ts.external.directory.path": "/Users/tino/WebstormProjects/API_Project/web/app/node_modules/typescript/lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/web/app/public/css" />
+      <recent name="$PROJECT_DIR$/web/app/src/pages/api" />
+      <recent name="$PROJECT_DIR$/api/src/utils/auth" />
       <recent name="$PROJECT_DIR$/web/app/src/pages/tickets" />
       <recent name="$PROJECT_DIR$/web/app/src/pages/animals" />
-      <recent name="$PROJECT_DIR$/web/app/src/pages/spaces" />
-      <recent name="$PROJECT_DIR$/web/app/src/pages/employees" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/web/app/src/utils" />
       <recent name="$PROJECT_DIR$/web/app/src/pages/employees/update" />
       <recent name="$PROJECT_DIR$/web/app/src/pages" />
       <recent name="$PROJECT_DIR$/web/app/public/css" />
       <recent name="$PROJECT_DIR$/web/app/styles" />
-      <recent name="$PROJECT_DIR$/web/app" />
     </key>
   </component>
   <component name="RunManager" selected="npm.buildandrun (1)">
@@ -151,7 +163,9 @@
       <workItem from="1689581177439" duration="20000" />
       <workItem from="1689587960247" duration="14390000" />
       <workItem from="1689631402595" duration="651000" />
-      <workItem from="1689836318568" duration="8268000" />
+      <workItem from="1689836318568" duration="8949000" />
+      <workItem from="1689884461033" duration="411000" />
+      <workItem from="1689884889676" duration="13047000" />
     </task>
     <servers />
   </component>

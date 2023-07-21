@@ -21,16 +21,10 @@ const Index = () => {
 
     return (
         <div>
-            <Menu />
-            {loading ? (
-                "Loading..."
-            ) : (
                 <div>
                     <h1>{zoo.name}</h1>
                     <p>{zoo.description}</p>
-
                 </div>
-            )}
         </div>
     );
 };

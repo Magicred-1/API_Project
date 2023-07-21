@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
-import supabaseDB from '../../utils/supabase/supabaseClient';
+import axios from 'axios';
 import Head from 'next/head';
 
 export default function CreateEmployee() {
     const [name, setName] = useState('');
     const [role, setRole] = useState('');
+    const [password, setPassword] = useState('');
+    const [isAdmin, setIsAdmin] = useState(false);
     const [availabilities, setAvailabilities] = useState<string[]>([]);
     const [success, setSuccess] = useState(false);
     const router = useRouter();
@@ -13,18 +15,21 @@ export default function CreateEmployee() {
     const handleSubmit = async (event: React.SyntheticEvent) => {
         event.preventDefault();
 
-        const { data, error } = await supabaseDB.supabase
-            .from('employees')
-            .insert([{ name, role, availabilities }]);
+        const response = await axios.post('/api/employees', {
+            name,
+            role,
+            password,
+            isAdmin,
+            availabilities,
+        });
 
-        if (error) {
-            console.error(error);
-        } else {
-            console.log(data);
+        if (response.status === 200) {
             setSuccess(true);
             setTimeout(() => {
                 router.push('/employees');
             }, 2000);
+        } else {
+            console.error(response.data);
         }
     }
 
@@ -44,6 +49,14 @@ export default function CreateEmployee() {
                     <label>
                         Role:
                         <input type="text" value={role} onChange={(e) => setRole(e.target.value)} />
+                    </label>
+                    <label>
+                        Password:
+                        <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                    </label>
+                    <label>
+                        Is Admin:
+                        <input type="checkbox" checked={isAdmin} onChange={(e) => setIsAdmin(e.target.checked)} />
                     </label>
                     <label>
                         Availabilities:

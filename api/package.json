@@ -37,6 +37,7 @@
     "typescript": "^5.0.4"
   },
   "dependencies": {
+    "next": "^13.4.10",
     "ts-node": "^10.9.1"
   },
   "pre-commit": [
