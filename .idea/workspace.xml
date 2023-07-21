@@ -2,22 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6439e320-0e8e-4c84-a6ef-b39c9a535b6b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/web/app/public/css/LoginPage.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/app/src/pages/api/employees.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/app/src/pages/api/login.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/app/src/pages/login.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/app/src/utils/auth/adminOnly.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/app/src/utils/auth/auth.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/app/src/utils/auth/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/app/public/css/Index.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/api/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/api/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/app/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/web/app/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/app/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/web/app/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/app/src/pages/employees/create.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/app/src/pages/employees/create.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/app/src/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/app/src/pages/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/app/src/utils/supabase/supabaseClient.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/app/src/utils/supabase/supabaseClient.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/app/src/utils/tokenAuthenfication/authMiddleware.ts" beforeDir="false" afterPath="$PROJECT_DIR$/web/app/src/utils/tokenAuthenfication/authMiddleware.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,8 +16,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="TypeScript File" />
-        <option value="CSS File" />
         <option value="TypeScript JSX File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -165,7 +153,7 @@
       <workItem from="1689631402595" duration="651000" />
       <workItem from="1689836318568" duration="8949000" />
       <workItem from="1689884461033" duration="411000" />
-      <workItem from="1689884889676" duration="13047000" />
+      <workItem from="1689884889676" duration="13857000" />
     </task>
     <servers />
   </component>
