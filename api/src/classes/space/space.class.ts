@@ -1,3 +1,5 @@
+//route: /spaces
+
 import { Animal } from '../animal/animal.class';
 import supabaseDB from '../../utils/supabase/supabaseClient';
 

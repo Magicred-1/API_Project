@@ -1,3 +1,5 @@
+//route: /animals
+
 import supabaseDB from "../../utils/supabase/supabaseClient"
 
 export class Animal {

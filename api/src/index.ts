@@ -5,3 +5,5 @@ export * from './classes/employee/employee.class';
 export * from './classes/animal/animal.class';
 export * from './classes/zoo/zoo.class';
 export * from './utils/tokenAuthenfication/authMiddleware';
+
+// Path: api/src/utils/supabase/supabaseClient.ts

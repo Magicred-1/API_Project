@@ -1,3 +1,5 @@
+// route /tickets
+
 import supabaseDB from "../../utils/supabase/supabaseClient";
 
 export class Ticket {

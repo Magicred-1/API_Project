@@ -1,3 +1,5 @@
+//route /employees
+
 import supabaseDB from "../../utils/supabase/supabaseClient"
 
 export class Employee {
